@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Baby Learns Cat & Dog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <button id="tech-info-toggle">More Info</button>
+  <div id="tech-info-box" style="display: none;">
+    <h3>Technical Equivalents</h3>
+    <ul>
+      <li>Baby → <strong>Machine Learning Model</strong></li>
+      <li>Pictures → <strong>Data Stream</strong></li>
+      <li>Changing Categories → <strong>Concept Drifts</strong></li>
+      <li>Mother → <strong>Drift Detector</strong></li>
+      <li>Baby Confidence → <strong>Model Confidence Score</strong></li>
+      <li>Cat & Dog → <strong>True Labels</strong></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div id="image-selection">
+      <div id="image-groups"></div>
+    </div>
+
+    <div id="interaction-column">
+      <h1>👶 Baby Learns Cat & Dog</h1>
+
+      <div id="interaction-row">
+        <div id="baby-container">
+          <div id="confidence-container">
+            <div id="confidence-label">Baby Confidence Rate</div>
+            <div id="confidence-bar">
+              <div id="confidence-fill" style="width: 0%;">0%</div>
+            </div>
+          </div>
+          <img src="images/other/baby.jpg" alt="Baby" id="baby-img">
+          <div class="speech-bubble" id="baby-speech">👶 I'm waiting...</div>
+        </div>
+
+        <div id="mother-container">
+          <img src="images/other/mother.jpg" alt="Mother" id="mother-img">
+          <div class="speech-bubble" id="mother-speech">👩 Hey baby, let's learn about dogs and cats!</div>
+        </div>
+      </div>
+
+      <div id="controls">
+        <button id="start-learning">Start Learning</button>
+        <button id="stop-learning" disabled>Stop Learning</button>
+        <button id="start-guessing">Start Guessing</button>
+        <button id="stop-guessing" disabled>Stop Guessing</button>
+        <button id="restart">Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
