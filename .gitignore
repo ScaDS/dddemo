@@ -1,6 +1,15 @@
-# ===============================
-# Python bytecode and metadata
-# ===============================
+# Virtual environments
+.env
+.venv/
+baby-env/
+**/baby-env/
+
+# Datasets
+dataset/raw/
+dataset/test/
+dataset/train/
+
+# Python artifacts
 __pycache__/
 *.py[cod]
 *.pyo
@@ -12,25 +21,8 @@ __pycache__/
 *.onnx
 *.sqlite3
 
-# ===============================
-# Virtual environments
-# ===============================
-.env
-.venv/
-baby-env/
-**/baby-env/
-
-# ===============================
-# Jupyter Notebooks
-# ===============================
+# Jupyter
 .ipynb_checkpoints/
 
-# ===============================
-# VSCode settings
-# ===============================
+# VSCode
 .vscode/
-
-# ===============================
-# Local datasets (raw or processed)
-# ===============================
-dataset/
