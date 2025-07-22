@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.venv
+baby-env/
+*.sqlite3
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
