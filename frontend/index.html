@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Baby Learns Cat & Dog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="main-container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+
+      <h1>👶 Baby Learns Cat & Dog</h1>
+
+      <div id="baby-mother">
+        <div id="baby-container">
+          <div id="accuracy-container">
+            <div id="accuracy-label">Baby Accuracy</div>
+            <div id="accuracy-bar">
+              <div id="accuracy-fill">0%</div>
+            </div>
+          </div>
+          <img src="images/baby.jpg" id="baby-img" alt="Baby">
+          <div class="speech-bubble" id="baby-speech">👶 I'm waiting...</div>
+        </div>
+
+        <div id="mother-container">
+          <img src="images/mother.jpg" id="mother-img" alt="Mother">
+          <div class="speech-bubble" id="mother-speech">👩 Hey baby, I am watching you learning and geussing cats and
+            dogs pictures!</div>
+        </div>
+      </div>
+
+      <div id="controls">
+        <div class="button-row">
+          <button id="train">Train</button>
+          <button id="guess">Guess</button>
+          <button id="restart">Restart</button>
+        </div>
+        <div class="button-row">
+          <button id="real" class="style-button" disabled>Real</button>
+          <button id="cartoon" class="style-button" disabled>Cartoon</button>
+          <button id="sketch" class="style-button" disabled>Sketch</button>
+          <button id="edge" class="style-button" disabled>Edge</button>
+          <button id="blur" class="style-button" disabled>Blur</button>
+        </div>
+      </div>
+      <div id="summary-box">
+        <h4>Guess Summary</h4>
+        <p>Correct: <span id="correct-count">0</span></p>
+        <p>Wrong: <span id="wrong-count">0</span></p>
+      </div>
+      <div id="more-info-container">
+        <button id="tech-info-toggle">More Info</button>
+        <div id="tech-info-box" style="display: none;">
+          <h3>Technical Equivalents</h3>
+          <ul>
+            <li>Baby → <strong>Machine Learning Model</strong></li>
+            <li>Pictures → <strong>Data Stream</strong></li>
+            <li>Changing Styles → <strong>Facing Concept Drifts</strong></li>
+            <li>Mother → <strong>Drift Detector</strong></li>
+            <li>Baby Accuracy → <strong>Model Accuracy</strong></li>
+            <li>Cat & Dog → <strong>True Labels</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div id="image-panel"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
