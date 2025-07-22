@@ -1,16 +1,36 @@
-# Python
+# ===============================
+# Python bytecode and metadata
+# ===============================
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
 *.egg-info/
-.env
-.venv
-baby-env/
+*.pkl
+*.h5
+*.pt
+*.onnx
 *.sqlite3
 
-# Jupyter
+# ===============================
+# Virtual environments
+# ===============================
+.env
+.venv/
+baby-env/
+**/baby-env/
+
+# ===============================
+# Jupyter Notebooks
+# ===============================
 .ipynb_checkpoints/
 
-# VSCode
+# ===============================
+# VSCode settings
+# ===============================
 .vscode/
+
+# ===============================
+# Local datasets (raw or processed)
+# ===============================
+dataset/
