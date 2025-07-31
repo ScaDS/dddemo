@@ -5,13 +5,13 @@ import numpy as np
 from tqdm import tqdm
 
 # Configuration
-RAW_DIR = "../datasets/raw"
-OUTPUT_DIR = "../datasets"
+RAW_DIR = "../dataset/raw"
+OUTPUT_DIR = "../dataset"
 IMG_SIZE = (128, 128)
 CATEGORIES = ['real', 'cartoon', 'sketch', 'blur', 'edge']
 ANIMALS = ['cat', 'dog']
-TRAIN_PER_CATEGORY = 80
-TEST_PER_CATEGORY = 20
+TRAIN_PER_CATEGORY = 500
+TEST_PER_CATEGORY = 100
 TOTAL_PER_CATEGORY = TRAIN_PER_CATEGORY + TEST_PER_CATEGORY
 
 # Ensure output directories exist
