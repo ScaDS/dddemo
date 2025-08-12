@@ -16,7 +16,7 @@ __pycache__/
 *.egg-info/
 *.pkl
 *.h5
-*.pt
+# *.pt
 *.onnx
 *.sqlite3
 
