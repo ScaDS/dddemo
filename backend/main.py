@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from typing import List
 import os
 
@@ -21,10 +22,17 @@ app.add_middleware(
 # Serve static dataset images to frontend
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATASET_DIR = os.path.join(BASE_DIR, "dataset")
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 app.mount("/dataset", StaticFiles(directory=DATASET_DIR), name="dataset")
+app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
 # Initialize global model
 model = BabyModel()
+
+@app.get("/")
+async def serve_frontend():
+    return FileResponse(os.path.join(BASE_DIR, "frontend/index.html"))
+
 
 @app.post("/train/")
 def load_model(styles: List[str] = Query(...)):
