@@ -4,35 +4,35 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import datasets, transforms
-from torchvision.models import resnet18
+from torchvision.models import resnet18, ResNet18_Weights
 from torch.utils.data import ConcatDataset, DataLoader
 from tqdm import tqdm
 
-# === Configuration ===
+# Configuration
 STYLES = ['real', 'cartoon', 'sketch', 'edge', 'blur']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TRAIN_DIR = os.path.join(BASE_DIR, 'dataset', 'train')
 TEST_DIR = os.path.join(BASE_DIR, 'dataset', 'test')
 MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models')
 SUMMARY_FILE = os.path.join(MODEL_DIR, "training_summary.txt")
-BATCH_SIZE = 32
+BATCH_SIZE = 50
 EPOCHS = 20
-IMG_SIZE = (224, 224)  # Required for ResNet18
+IMG_SIZE = (224, 224) 
 LEARNING_RATE = 0.0001
 
 os.makedirs(MODEL_DIR, exist_ok=True)
 
-# === Model Definition: ResNet18 + Custom Head ===
+# Model Definition: ResNet18 + Custom Head
 class CNNModel(nn.Module):
     def __init__(self):
         super().__init__()
-        self.base = resnet18(pretrained=True)
-        self.base.fc = nn.Linear(self.base.fc.in_features, 2)  # binary classifier
+        self.base = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
+        self.base.fc = nn.Linear(self.base.fc.in_features, 2)
 
     def forward(self, x):
         return self.base(x)
 
-# === Image Transform for ResNet ===
+# Image Transform for ResNet
 transform = transforms.Compose([
     transforms.Resize(IMG_SIZE),
     transforms.ToTensor(),
@@ -40,7 +40,7 @@ transform = transforms.Compose([
                          std=[0.229, 0.224, 0.225])
 ])
 
-# === Utility Functions ===
+# Utility Functions
 def get_combination_name(styles):
     return "_".join(sorted(styles))
 
@@ -68,7 +68,7 @@ def evaluate_model(model, dataloader, device):
 
 def train_model(styles):
     name = get_combination_name(styles)
-    print(f"\n🔧 Training model for: {name}")
+    print(f"\n Training model for: {name}")
 
     # Load training and validation datasets
     train_dataset = get_dataset_for_styles(styles, TRAIN_DIR)
@@ -107,11 +107,11 @@ def train_model(styles):
     # Save model
     model_path = os.path.join(MODEL_DIR, f"model_{name}.pt")
     torch.save(model.state_dict(), model_path)
-    print(f"✅ Saved model to {model_path}")
+    print(f"Saved model to {model_path}")
 
     # Evaluate
     accuracy = evaluate_model(model, val_loader, device)
-    print(f"✅ Validation Accuracy for {name}: {accuracy:.2%}")
+    print(f"Validation Accuracy for {name}: {accuracy:.2%}")
 
     # Log accuracy
     with open(SUMMARY_FILE, "a") as f:

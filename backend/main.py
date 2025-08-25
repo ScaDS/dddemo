@@ -30,7 +30,6 @@ model = BabyModel()
 def load_model(styles: List[str] = Query(...)):
     """
     Load a pretrained model for the selected styles.
-    Example: /train/?styles=real&styles=cartoon
     """
     try:
         model.load_pretrained_model(styles)

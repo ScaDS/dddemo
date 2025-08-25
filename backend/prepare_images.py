@@ -1,7 +1,6 @@
 import os
 import cv2
 import random
-import numpy as np
 from tqdm import tqdm
 
 # Configuration
