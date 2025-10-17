@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from typing import List
 import os
 
@@ -18,13 +19,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static dataset images to frontend
+# Base directory resolution
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATASET_DIR = os.path.join(BASE_DIR, "dataset")
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+
+# Serve static dataset images to frontend
 app.mount("/dataset", StaticFiles(directory=DATASET_DIR), name="dataset")
 
 # Initialize global model
 model = BabyModel()
+
+@app.get("/")
+async def serve_frontend():
+    """
+    Serve the main frontend HTML page.
+    """
+    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
 
 @app.post("/train/")
 def load_model(styles: List[str] = Query(...)):
@@ -62,3 +73,7 @@ def get_loaded_styles():
     Return the currently loaded style list (alphabetical).
     """
     return {"loaded_styles": model.loaded_styles}
+
+# Mount frontend static files (CSS, JS, images) - MUST BE LAST
+# This serves all static assets like style.css, script.js, etc.
+app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
