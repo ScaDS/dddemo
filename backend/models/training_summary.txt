@@ -1,3 +1,0 @@
-Final Test Accuracy (trained styles only) — FAST
-
-real: test_acc=0.6900
