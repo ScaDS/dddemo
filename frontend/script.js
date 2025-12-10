@@ -8,6 +8,61 @@ let totalPredictions = 0;
 let correctCount = 0;
 let wrongCount = 0;
 
+// ========== NAVIGATION ==========
+
+// Highlight active nav link on scroll
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function updateActiveNav() {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    const sectionHeight = section.offsetHeight;
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('load', updateActiveNav);
+
+// Smooth scroll for nav links
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ========== THEME TOGGLE ==========
+
+const themeToggle = document.getElementById('theme-toggle');
+
+// Check for saved theme preference or default to dark
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+});
+
 // ========== UTILITIES ==========
 
 function toggleStyleButtons(state) {
@@ -24,28 +79,16 @@ function getTrueLabelFromPath(path) {
   return null;
 }
 
-function updateAccuracyBar() {
-  const bar = document.getElementById("accuracy-fill");
-  const label = document.getElementById("accuracy-label");
-
+function updateAccuracyDisplay() {
+  const accuracyEl = document.getElementById("accuracy-percent");
+  
   if (totalPredictions === 0) {
-    bar.style.width = "0%";
-    bar.textContent = "0%";
-    label.textContent = "Model Accuracy";
-    bar.style.backgroundColor = "transparent";
+    accuracyEl.textContent = "0%";
     return;
   }
 
   const acc = Math.round((correctPredictions / totalPredictions) * 100);
-  bar.style.width = `${acc}%`;
-  bar.textContent = `${acc}%`;
-  label.textContent = "Model Accuracy";
-
-  bar.style.backgroundColor =
-    acc < 30 ? "red" :
-      acc < 50 ? "orange" :
-        acc < 70 ? "yellow" :
-          acc < 90 ? "lightgreen" : "green";
+  accuracyEl.textContent = `${acc}%`;
 }
 
 async function fileFromUrl(url) {
@@ -72,8 +115,7 @@ document.getElementById("train").addEventListener("click", () => {
   toggleStyleButtons(true);                     // Enable only unselected styles
   document.getElementById("train").disabled = true;  // Disable Train
   document.getElementById("guess").disabled = true;  // Disable Guess
-  document.getElementById("baby-speech").textContent = "👶 I'm ready to learn!";
-  // document.getElementById("mother-speech").textContent = "👩 Pick a style to train on!";
+  document.getElementById("baby-speech").textContent = "Ready to learn from new data...";
 });
 
 document.querySelectorAll(".style-button").forEach(button => {
@@ -94,8 +136,7 @@ document.querySelectorAll(".style-button").forEach(button => {
     console.log(data);
 
     if (response.ok) {
-      document.getElementById("baby-speech").textContent = "👶 I saw new pictures!";
-      // document.getElementById("mother-speech").textContent = "👩 You're learning fast!";
+      document.getElementById("baby-speech").textContent = "I have seen cat and dog images.";
       button.disabled = true;
       showTrainingImages(style);
       toggleStyleButtons(false);               // Disable all style buttons
@@ -114,17 +155,17 @@ document.getElementById("guess").addEventListener("click", async () => {
     return;
   }
 
-  // 🔍 Fetch currently loaded model from backend
+  // Fetch currently loaded model from backend
   const response = await fetch(`${BACKEND_URL}/trained_styles`);
   if (response.ok) {
     const data = await response.json();
     const styles = data.loaded_styles.join(", ");
-    console.log(`✅ Guessing with model trained on: ${styles}`);
+    console.log(`Predicting with model trained on: ${styles}`);
   }
 
   loadGuessingImages();
-  document.getElementById("baby-speech").textContent = "👶 Let me try guessing...";
-  document.getElementById("mother-speech").textContent = "👩 I'm watching you guess!";
+  document.getElementById("baby-speech").textContent = "Running predictions on test data...";
+  document.getElementById("mother-speech").textContent = "Monitoring model performance...";
 });
 
 document.getElementById("restart").addEventListener("click", async () => {
@@ -138,12 +179,12 @@ document.getElementById("restart").addEventListener("click", async () => {
   document.getElementById("guess").disabled = false;
 
   document.getElementById("image-panel").innerHTML = "";
-  document.getElementById("baby-speech").textContent = "👶 I forgot everything!";
-  document.getElementById("mother-speech").textContent = "👩 Let's start from the beginning!";
+  document.getElementById("baby-speech").textContent = "Model reset. Ready for new training.";
+  document.getElementById("mother-speech").textContent = "System reinitialized. Select a training style.";
 
   correctPredictions = 0;
   totalPredictions = 0;
-  updateAccuracyBar();
+  updateAccuracyDisplay();
   correctCount = 0;
   wrongCount = 0;
   document.getElementById("correct-count").textContent = "0";
@@ -222,7 +263,7 @@ async function predict(imgEl) {
       imgEl.classList.add("disabled-image");
       imgEl.onclick = null;
 
-      document.getElementById("baby-speech").textContent = `👶 I think it's a ${result.label}!`;
+    document.getElementById("baby-speech").textContent = `I guess it is a ${result.label}`;
 
       const trueLabel = getTrueLabelFromPath(imgEl.src);
       totalPredictions++;
@@ -233,15 +274,15 @@ async function predict(imgEl) {
         wrongCount++;
       }
 
-      updateAccuracyBar();
-      document.getElementById("correct-count").textContent = correctCount;
-      document.getElementById("wrong-count").textContent = wrongCount;
+    updateAccuracyDisplay();
+    document.getElementById("correct-count").textContent = correctCount;
+    document.getElementById("wrong-count").textContent = wrongCount;
 
       const accuracy = correctPredictions / totalPredictions;
 
-      if (accuracy < 0.75) {
-        document.getElementById("mother-speech").textContent =
-          "👩 I think you're confused! You need to learn more!";
+    if (accuracy < 0.75) {
+      document.getElementById("mother-speech").textContent =
+        "Oh no, this image looks a little bit different...";
 
         // Disable all remaining images in the guessing phase
         document.querySelectorAll("#image-panel img").forEach(img => {

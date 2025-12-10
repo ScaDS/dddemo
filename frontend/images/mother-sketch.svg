@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Hair - flowing style -->
+  <path d="M40 60 Q30 100 35 140" stroke-width="2.5"/>
+  <path d="M45 55 Q32 95 40 135" stroke-width="2" stroke-dasharray="4,2"/>
+  <path d="M160 60 Q170 100 165 140" stroke-width="2.5"/>
+  <path d="M155 55 Q168 95 160 135" stroke-width="2" stroke-dasharray="4,2"/>
+  
+  <!-- Hair top -->
+  <path d="M50 50 Q70 25 100 30 Q130 25 150 50" stroke-width="3"/>
+  <path d="M55 45 Q75 20 100 25 Q125 20 145 45" stroke-width="2" stroke-dasharray="3,2" opacity="0.5"/>
+  
+  <!-- Face outline -->
+  <ellipse cx="100" cy="95" rx="45" ry="55" stroke-dasharray="3,2" opacity="0.3"/>
+  <ellipse cx="100" cy="95" rx="45" ry="55"/>
+  
+  <!-- Eyes - wise and caring -->
+  <path d="M70 85 Q80 80 90 85 Q80 92 70 85"/>
+  <path d="M110 85 Q120 80 130 85 Q120 92 110 85"/>
+  <!-- Pupils -->
+  <circle cx="80" cy="86" r="4" fill="#2d3748"/>
+  <circle cx="120" cy="86" r="4" fill="#2d3748"/>
+  <!-- Eye shine -->
+  <circle cx="82" cy="84" r="1.5" fill="white"/>
+  <circle cx="122" cy="84" r="1.5" fill="white"/>
+  
+  <!-- Eyebrows - gentle arch -->
+  <path d="M65 75 Q80 70 92 76" stroke-width="2"/>
+  <path d="M108 76 Q120 70 135 75" stroke-width="2"/>
+  
+  <!-- Nose -->
+  <path d="M100 90 L97 105 Q100 108 103 105" stroke-width="1.5"/>
+  
+  <!-- Mouth - warm smile -->
+  <path d="M85 120 Q100 132 115 120" stroke-width="2"/>
+  <path d="M90 118 Q100 125 110 118" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Glasses (optional - makes her look smart/observant) -->
+  <circle cx="80" cy="86" r="18" stroke-width="1.5"/>
+  <circle cx="120" cy="86" r="18" stroke-width="1.5"/>
+  <path d="M98 86 L102 86" stroke-width="1.5"/>
+  <path d="M62 86 L50 82" stroke-width="1.5"/>
+  <path d="M138 86 L150 82" stroke-width="1.5"/>
+  
+  <!-- Neck and shoulders hint -->
+  <path d="M85 150 L85 165" stroke-width="2"/>
+  <path d="M115 150 L115 165" stroke-width="2"/>
+  <path d="M50 185 Q85 170 100 175 Q115 170 150 185" stroke-width="2.5"/>
+  
+  <!-- Collar/clothing detail -->
+  <path d="M80 165 Q100 180 120 165" stroke-width="2" stroke-dasharray="3,2"/>
+</svg>

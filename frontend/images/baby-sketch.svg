@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Head outline - sketchy style with multiple strokes -->
+  <ellipse cx="100" cy="90" rx="55" ry="60" stroke-dasharray="3,2" opacity="0.3"/>
+  <ellipse cx="100" cy="90" rx="55" ry="60"/>
+  
+  <!-- Hair tufts -->
+  <path d="M70 35 Q65 20 75 25 Q80 15 85 28" stroke-width="2.5"/>
+  <path d="M95 30 Q100 15 105 30" stroke-width="2.5"/>
+  <path d="M120 35 Q125 20 130 28 Q135 15 125 25" stroke-width="2.5"/>
+  
+  <!-- Eyes - big curious baby eyes -->
+  <ellipse cx="75" cy="85" rx="15" ry="18"/>
+  <ellipse cx="125" cy="85" rx="15" ry="18"/>
+  <!-- Pupils -->
+  <circle cx="78" cy="88" r="7" fill="#2d3748"/>
+  <circle cx="128" cy="88" r="7" fill="#2d3748"/>
+  <!-- Eye shine -->
+  <circle cx="81" cy="85" r="3" fill="white"/>
+  <circle cx="131" cy="85" r="3" fill="white"/>
+  
+  <!-- Eyebrows - curious expression -->
+  <path d="M60 65 Q75 58 90 68" stroke-width="2.5"/>
+  <path d="M110 68 Q125 58 140 65" stroke-width="2.5"/>
+  
+  <!-- Nose -->
+  <path d="M100 95 Q95 105 100 110 Q105 105 100 95" stroke-width="1.5"/>
+  
+  <!-- Mouth - happy smile -->
+  <path d="M80 125 Q100 145 120 125" stroke-width="2.5"/>
+  
+  <!-- Cheeks - rosy circles (sketchy) -->
+  <circle cx="60" cy="110" r="10" stroke-dasharray="2,3" opacity="0.5"/>
+  <circle cx="140" cy="110" r="10" stroke-dasharray="2,3" opacity="0.5"/>
+  
+  <!-- Ears -->
+  <ellipse cx="45" cy="90" rx="8" ry="15"/>
+  <ellipse cx="155" cy="90" rx="8" ry="15"/>
+  
+  <!-- Body hint -->
+  <path d="M60 150 Q100 160 140 150" stroke-width="2"/>
+  <path d="M55 155 Q100 180 145 155" stroke-width="2" stroke-dasharray="4,2"/>
+  
+  <!-- Pacifier -->
+  <circle cx="100" cy="140" r="8" stroke-width="2"/>
+  <ellipse cx="100" cy="140" rx="4" ry="3" fill="#2d3748"/>
+</svg>
