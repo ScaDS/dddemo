@@ -90,6 +90,8 @@ document.querySelectorAll(".style-button").forEach(button => {
     const query = styleList.map(s => `styles=${s}`).join("&");
 
     const response = await fetch(`${BACKEND_URL}/train/?${query}`, { method: "POST" });
+    const data = await response.json();
+    console.log(data);
 
     if (response.ok) {
       document.getElementById("baby-speech").textContent = "👶 I saw new pictures!";
