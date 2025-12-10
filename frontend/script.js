@@ -206,50 +206,49 @@ function loadGuessingImages() {
 // ========== PREDICTION ==========
 
 async function predict(imgEl) {
+  console.log(imgEl)
   const file = await fileFromUrl(imgEl.src);
   const formData = new FormData();
   formData.append("file", file);
 
-  const response = await fetch(`${BACKEND_URL}/predict/`, {
+  const response = fetch(`${BACKEND_URL}/predict/`, {
     method: "POST",
     body: formData
-  });
+  }).then(response => response.json())
+    .then(result => {
 
-  if (response.ok) {
-    const result = await response.json();
-    imgEl.classList.add("disabled-image");
-    imgEl.onclick = null;
+      imgEl.classList.add("disabled-image");
+      imgEl.onclick = null;
 
-    document.getElementById("baby-speech").textContent = `👶 I think it's a ${result.label}!`;
+      document.getElementById("baby-speech").textContent = `👶 I think it's a ${result.label}!`;
 
-    const trueLabel = getTrueLabelFromPath(imgEl.src);
-    totalPredictions++;
-    if (result.label === trueLabel) {
-      correctPredictions++;
-      correctCount++;
-    } else {
-      wrongCount++;
-    }
+      const trueLabel = getTrueLabelFromPath(imgEl.src);
+      totalPredictions++;
+      if (result.label === trueLabel) {
+        correctPredictions++;
+        correctCount++;
+      } else {
+        wrongCount++;
+      }
 
-    updateAccuracyBar();
-    document.getElementById("correct-count").textContent = correctCount;
-    document.getElementById("wrong-count").textContent = wrongCount;
+      updateAccuracyBar();
+      document.getElementById("correct-count").textContent = correctCount;
+      document.getElementById("wrong-count").textContent = wrongCount;
 
-    const accuracy = correctPredictions / totalPredictions;
+      const accuracy = correctPredictions / totalPredictions;
 
-    if (accuracy < 0.75) {
-      document.getElementById("mother-speech").textContent =
-        "👩 I think you're confused! You need to learn more!";
+      if (accuracy < 0.75) {
+        document.getElementById("mother-speech").textContent =
+          "👩 I think you're confused! You need to learn more!";
 
-      // Disable all remaining images in the guessing phase
-      document.querySelectorAll("#image-panel img").forEach(img => {
-        img.onclick = null;
-        img.classList.add("disabled-image");
-      });
-    }
+        // Disable all remaining images in the guessing phase
+        document.querySelectorAll("#image-panel img").forEach(img => {
+          img.onclick = null;
+          img.classList.add("disabled-image");
+        });
+      }
 
-  } else {
-    alert("Prediction failed.");
-  }
+    }).catch(e => { alert("Prediction failed.") });
+
 }
 

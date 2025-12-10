@@ -6,6 +6,7 @@ baby-env/
 
 # Datasets
 # dataset/
+archive/
 
 # Python artifacts
 __pycache__/

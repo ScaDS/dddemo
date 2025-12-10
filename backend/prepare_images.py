@@ -1,13 +1,12 @@
 import os
 import cv2
 import random
-import numpy as np
 from tqdm import tqdm
 
 # Configuration
 RAW_DIR = "../dataset/raw"
 OUTPUT_DIR = "../dataset"
-IMG_SIZE = (128, 128)
+IMG_SIZE = (224, 224)
 CATEGORIES = ['real', 'cartoon', 'sketch', 'blur', 'edge']
 ANIMALS = ['cat', 'dog']
 TRAIN_PER_CATEGORY = 500

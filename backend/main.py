@@ -23,9 +23,9 @@ app.add_middleware(
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATASET_DIR = os.path.join(BASE_DIR, "dataset")
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
-
 # Serve static dataset images to frontend
 app.mount("/dataset", StaticFiles(directory=DATASET_DIR), name="dataset")
+app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
 # Initialize global model
 model = BabyModel()
@@ -35,13 +35,12 @@ async def serve_frontend():
     """
     Serve the main frontend HTML page.
     """
-    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+    return FileResponse(os.path.join(BASE_DIR, "frontend/index.html"))
 
 @app.post("/train/")
 def load_model(styles: List[str] = Query(...)):
     """
     Load a pretrained model for the selected styles.
-    Example: /train/?styles=real&styles=cartoon
     """
     try:
         model.load_pretrained_model(styles)
