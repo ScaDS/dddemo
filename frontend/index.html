@@ -3,15 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-<<<<<<< HEAD
-  <title>Baby Learns Cat & Dog</title>
-  <link rel="stylesheet" href="static/style.css">
-=======
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Concept Drift Learning Demo</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
->>>>>>> IJCAI26
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -57,29 +52,43 @@
           <div id="baby-mother">
             <div id="baby-container">
               <img src="images/baby-sketch.svg" id="baby-img" alt="ML Model (Toddler)">
-              <div class="character-label">Toddler</div>
-              <div class="speech-bubble" id="baby-speech">I'm waiting to learn...</div>
+              <div class="character-label" id="baby-label" data-technical="Convolutional Neural Network" data-simple="Toddler">Toddler</div>
+              <div class="speech-bubble" id="baby-speech">Ready to guess with real style!</div>
             </div>
 
             <div id="mother-container">
               <img src="images/mother-sketch.svg" id="mother-img" alt="Drift Detector (Mother)">
-              <div class="character-label">Parent</div>
+              <div class="character-label" id="mother-label" data-technical="Concept Drift Detector" data-simple="Parent">Parent</div>
               <div class="speech-bubble" id="mother-speech">I'm monitoring the toddler guessing cats and dogs...</div>
             </div>
           </div>
 
           <div id="controls">
             <div class="button-row">
-              <button id="train" class="btn btn-primary">Train</button>
-              <button id="guess" class="btn btn-secondary">Predict</button>
+              <button id="train" class="btn btn-secondary" data-technical="Train" data-simple="Learn">Learn</button>
+              <button id="guess" class="btn btn-secondary btn-active" data-technical="Predict" data-simple="Guess">Guess</button>
               <button id="restart" class="btn btn-outline">Restart</button>
             </div>
-            <div class="button-row style-buttons">
-              <button id="real" class="style-button" disabled>Real</button>
-              <button id="cartoon" class="style-button" disabled>Cartoon</button>
-              <button id="sketch" class="style-button" disabled>Sketch</button>
-              <button id="edge" class="style-button" disabled>Edge</button>
-              <button id="blur" class="style-button" disabled>Blur</button>
+            <div class="style-buttons-container">
+              <div class="button-row style-buttons">
+                <button id="real" class="style-button style-trained style-selected">Real</button>
+                <button id="cartoon" class="style-button">Cartoon</button>
+                <button id="sketch" class="style-button">Sketch</button>
+                <button id="edge" class="style-button">Edge</button>
+                <button id="blur" class="style-button">Blur</button>
+              </div>
+              <div class="hints-row">
+                <div class="tutorial-hint hint-left" id="style-hint">
+                  <svg class="hint-arrow-svg" viewBox="0 0 30 40" width="30" height="40">
+                    <path d="M5 35 Q5 20 15 10 Q20 5 25 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <path d="M25 5 L18 5 M25 5 L25 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  </svg>
+                  <span class="hint-text" id="style-hint-text">Select filters to show images to guess</span>
+                </div>
+                <div class="tutorial-hint hint-right hint-legend">
+                  <span class="hint-text"><span class="legend-checkmark">✓</span> = already learned</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -102,18 +111,7 @@
           </div>
 
           <div id="more-info-container">
-            <button id="tech-info-toggle" class="btn btn-info">Technical Details</button>
-            <div id="tech-info-box" style="display: none;">
-              <h3>Technical Equivalents</h3>
-              <ul>
-                <li><span class="term">Baby</span> → <strong>Machine Learning Model</strong></li>
-                <li><span class="term">Pictures</span> → <strong>Data Stream</strong></li>
-                <li><span class="term">Changing Styles</span> → <strong>Concept Drift</strong></li>
-                <li><span class="term">Mother</span> → <strong>Drift Detector</strong></li>
-                <li><span class="term">Accuracy</span> → <strong>Model Performance</strong></li>
-                <li><span class="term">Cat & Dog</span> → <strong>Classification Labels</strong></li>
-              </ul>
-            </div>
+            <button id="tech-info-toggle" class="btn btn-info">Switch to technical terms</button>
           </div>
         </div>
 
@@ -175,7 +173,7 @@
     </div>
   </footer>
 
-  <script src="static/script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

@@ -20,10 +20,12 @@ class CNNModel(nn.Module):
 
 # BabyModel Wrapper
 class BabyModel:
-    def __init__(self):
+    def __init__(self, load_default=True):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = CNNModel().to(self.device)
         self.loaded_styles = []  # Track currently loaded styles
+        if load_default:
+            self.load_pretrained_model(["real"])
 
     def load_pretrained_model(self, styles):
         if not styles:
@@ -56,4 +58,4 @@ class BabyModel:
             return ['cat', 'dog'][predicted.item()]
 
     def reset(self):
-        self.__init__()  # Reinitialize everything
+        self.__init__(load_default=True)  # Reinitialize with default model

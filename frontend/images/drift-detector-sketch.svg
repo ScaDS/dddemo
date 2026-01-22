@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Concept Drift Detector Sketch - matching mother-sketch style -->
+  
+  <!-- Main monitor/screen frame -->
+  <rect x="35" y="30" width="130" height="100" rx="8" stroke-dasharray="3,2" opacity="0.3"/>
+  <rect x="35" y="30" width="130" height="100" rx="8"/>
+  
+  <!-- Screen inner border -->
+  <rect x="45" y="40" width="110" height="80" rx="4" stroke-width="1.5"/>
+  
+  <!-- Performance line graph - showing drift -->
+  <path d="M55 100 L70 85 L85 88 L100 70 L115 95 L130 110 L145 105" stroke-width="2.5" stroke="#2d3748"/>
+  <path d="M55 100 L70 85 L85 88 L100 70" stroke-width="2" opacity="0.5" stroke-dasharray="0"/>
+  <path d="M100 70 L115 95 L130 110 L145 105" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Drift detection point - alert marker -->
+  <circle cx="100" cy="70" r="6" stroke-width="2"/>
+  <circle cx="100" cy="70" r="3" fill="#2d3748"/>
+  <path d="M100 58 L100 52" stroke-width="2"/>
+  <path d="M94 62 L88 56" stroke-width="1.5"/>
+  <path d="M106 62 L112 56" stroke-width="1.5"/>
+  
+  <!-- Alert waves emanating from detection point -->
+  <path d="M85 55 Q100 45 115 55" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
+  <path d="M80 48 Q100 35 120 48" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+  
+  <!-- Axis lines -->
+  <path d="M50 110 L50 50" stroke-width="1.5" opacity="0.6"/>
+  <path d="M50 110 L150 110" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Y-axis label ticks -->
+  <path d="M48 60 L52 60" stroke-width="1"/>
+  <path d="M48 80 L52 80" stroke-width="1"/>
+  <path d="M48 100 L52 100" stroke-width="1"/>
+  
+  <!-- Monitor stand -->
+  <path d="M85 130 L85 145 L115 145 L115 130" stroke-width="2"/>
+  <path d="M75 145 L125 145" stroke-width="2.5"/>
+  <path d="M70 145 Q100 155 130 145" stroke-width="2" stroke-dasharray="3,2" opacity="0.5"/>
+  
+  <!-- Base -->
+  <ellipse cx="100" cy="150" rx="35" ry="8" stroke-dasharray="3,2" opacity="0.3"/>
+  <ellipse cx="100" cy="150" rx="35" ry="8"/>
+  
+  <!-- Magnifying glass overlay - representing detection/monitoring -->
+  <circle cx="155" cy="155" r="22" stroke-width="2" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="155" cy="155" r="22" stroke-width="2"/>
+  <circle cx="155" cy="155" r="16" stroke-width="1.5"/>
+  <path d="M170 170 L185 185" stroke-width="3"/>
+  <path d="M172 172 L183 183" stroke-width="2" stroke-dasharray="2,2" opacity="0.5"/>
+  
+  <!-- Eye inside magnifying glass - watching/detecting -->
+  <ellipse cx="155" cy="155" rx="8" ry="6"/>
+  <circle cx="155" cy="155" r="3" fill="#2d3748"/>
+  <circle cx="157" cy="153" r="1" fill="white"/>
+  
+  <!-- Status indicator lights -->
+  <circle cx="45" cy="125" r="4" stroke-width="1.5"/>
+  <circle cx="55" cy="125" r="4" stroke-width="1.5"/>
+  <circle cx="55" cy="125" r="2" fill="#2d3748"/>
+  
+  <!-- Decorative circuit-like lines -->
+  <path d="M25 80 L30 80 L30 100 L25 100" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.4"/>
+  <path d="M175 60 L180 60 L180 80 L175 80" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.4"/>
+</svg>

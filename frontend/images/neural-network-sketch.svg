@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Neural Network Sketch - matching baby-sketch style -->
+  
+  <!-- Input layer nodes -->
+  <circle cx="40" cy="50" r="12" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="40" cy="50" r="12"/>
+  <circle cx="40" cy="100" r="12" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="40" cy="100" r="12"/>
+  <circle cx="40" cy="150" r="12" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="40" cy="150" r="12"/>
+  
+  <!-- Hidden layer nodes -->
+  <circle cx="100" cy="40" r="12" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="100" cy="40" r="12"/>
+  <circle cx="100" cy="80" r="12" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="100" cy="80" r="12"/>
+  <circle cx="100" cy="120" r="12" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="100" cy="120" r="12"/>
+  <circle cx="100" cy="160" r="12" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="100" cy="160" r="12"/>
+  
+  <!-- Output layer nodes -->
+  <circle cx="160" cy="75" r="14" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="160" cy="75" r="14"/>
+  <circle cx="160" cy="125" r="14" stroke-dasharray="3,2" opacity="0.3"/>
+  <circle cx="160" cy="125" r="14"/>
+  
+  <!-- Connections input to hidden - sketchy lines -->
+  <path d="M52 50 Q76 45 88 40" stroke-width="1.5" opacity="0.6"/>
+  <path d="M52 50 Q76 65 88 80" stroke-width="1.5" opacity="0.6"/>
+  <path d="M52 50 Q76 85 88 120" stroke-width="1.5" opacity="0.4"/>
+  <path d="M52 100 Q76 70 88 40" stroke-width="1.5" opacity="0.6"/>
+  <path d="M52 100 Q76 90 88 80" stroke-width="1.5" opacity="0.6"/>
+  <path d="M52 100 Q76 110 88 120" stroke-width="1.5" opacity="0.6"/>
+  <path d="M52 100 Q76 130 88 160" stroke-width="1.5" opacity="0.4"/>
+  <path d="M52 150 Q76 95 88 80" stroke-width="1.5" opacity="0.4"/>
+  <path d="M52 150 Q76 135 88 120" stroke-width="1.5" opacity="0.6"/>
+  <path d="M52 150 Q76 155 88 160" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Connections hidden to output -->
+  <path d="M112 40 Q136 57 146 75" stroke-width="1.5" opacity="0.6"/>
+  <path d="M112 80 Q136 77 146 75" stroke-width="1.5" opacity="0.6"/>
+  <path d="M112 120 Q136 97 146 75" stroke-width="1.5" opacity="0.4"/>
+  <path d="M112 80 Q136 102 146 125" stroke-width="1.5" opacity="0.4"/>
+  <path d="M112 120 Q136 122 146 125" stroke-width="1.5" opacity="0.6"/>
+  <path d="M112 160 Q136 142 146 125" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Node fills - gradient effect with inner circles -->
+  <circle cx="40" cy="50" r="6" fill="#2d3748" opacity="0.3"/>
+  <circle cx="40" cy="100" r="6" fill="#2d3748" opacity="0.3"/>
+  <circle cx="40" cy="150" r="6" fill="#2d3748" opacity="0.3"/>
+  <circle cx="100" cy="40" r="6" fill="#2d3748" opacity="0.4"/>
+  <circle cx="100" cy="80" r="6" fill="#2d3748" opacity="0.4"/>
+  <circle cx="100" cy="120" r="6" fill="#2d3748" opacity="0.4"/>
+  <circle cx="100" cy="160" r="6" fill="#2d3748" opacity="0.4"/>
+  <circle cx="160" cy="75" r="7" fill="#2d3748" opacity="0.5"/>
+  <circle cx="160" cy="125" r="7" fill="#2d3748" opacity="0.5"/>
+  
+  <!-- Labels - sketchy text style -->
+  <text x="35" cy="185" font-family="serif" font-size="10" fill="#2d3748" opacity="0.7">Input</text>
+  <text x="88" cy="185" font-family="serif" font-size="10" fill="#2d3748" opacity="0.7">Hidden</text>
+  <text x="148" cy="185" font-family="serif" font-size="10" fill="#2d3748" opacity="0.7">Output</text>
+  
+  <!-- Decorative brain-like curves around the network -->
+  <path d="M20 25 Q10 100 20 175" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.4"/>
+  <path d="M180 25 Q190 100 180 175" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.4"/>
+</svg>

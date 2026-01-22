@@ -446,6 +446,101 @@ body {
   cursor: not-allowed;
 }
 
+.style-button.style-selected {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+.style-button.style-trained {
+  border-color: var(--success);
+  position: relative;
+}
+
+.style-button.style-trained::after {
+  content: '✓';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--success);
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-active {
+  background: var(--accent-gradient) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* ========== Tutorial Hints ========== */
+.style-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hints-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 450px;
+  margin-top: 0.75rem;
+}
+
+.tutorial-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: var(--accent-secondary);
+  max-width: 200px;
+}
+
+.hint-left {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.hint-right {
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: right;
+}
+
+.hint-arrow-svg {
+  flex-shrink: 0;
+  color: var(--accent-secondary);
+}
+
+.hint-text {
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.legend-checkmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--success);
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  margin-right: 0.2rem;
+  vertical-align: middle;
+}
+
 /* ========== Summary Box ========== */
 #summary-box {
   background: var(--bg-tertiary);
@@ -728,4 +823,85 @@ body {
     width: 70px;
     height: 70px;
   }
+}
+
+/* ========== Loading Animation ========== */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.loading-content {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--accent-primary);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loading-subtext {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* ========== Retrain Prompt ========== */
+#retrain-prompt {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--warning);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: var(--warning); }
+  50% { border-color: var(--error); }
+}
+
+#retrain-prompt p {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+#retrain-prompt .btn {
+  margin-top: 0.5rem;
 }
