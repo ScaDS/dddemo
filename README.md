@@ -1,6 +1,6 @@
-# Baby Drift 🐱🐶
+# Drift Detector Demo (DDDemo)
 
-A machine learning application for cat and dog classification with online learning capabilities using concept drift detection.
+An interactive demo application for understanding concept drift in machine learning. Watch how a model learns to classify cats and dogs, and see what happens when the data distribution changes.
 
 ## 📋 Prerequisites
 
@@ -159,14 +159,56 @@ self.device = torch.device("cpu")
 - **Pillow**: Image processing
 - **OpenCV**: Computer vision operations
 
+## 🐳 Docker Setup
+
+The easiest way to run the application is using Docker.
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+
+### Run with Docker Compose
+
+```bash
+# Build and start the container
+docker-compose up --build
+
+# Or run in detached mode
+docker-compose up -d --build
+```
+
+### Run with Docker directly
+
+```bash
+# Build the image
+docker build -t dddemo .
+
+# Run the container
+docker run -p 8000:8000 dddemo
+```
+
+The application will be available at http://localhost:8000
+
+### Stop the container
+
+```bash
+# If using docker-compose
+docker-compose down
+
+# If using docker directly
+docker stop <container-id>
+```
+
 ## 📝 Notes
 
-- The application uses ResNet18 as the base CNN architecture
+- The application uses a simple CNN architecture for classification
 - Models are saved in `backend/models/` directory
 - The frontend and backend are served together by FastAPI as a unified application
 - Frontend static files (HTML, CSS, JS) are served from the `frontend/` directory
 - CORS is enabled for all origins (modify in production if needed)
 - Dataset images are served via `/dataset` endpoint for the frontend to display
+- Toggle between "technical" and "non-technical" terminology in the UI
 
 ## 🤝 Contributing
 

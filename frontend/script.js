@@ -568,9 +568,13 @@ function showRetrainPrompt() {
   if (!retrainPrompt) {
     retrainPrompt = document.createElement("div");
     retrainPrompt.id = "retrain-prompt";
+    const promptText = useTechnicalTerms 
+      ? "Performance dropped! Select a new style to retrain:" 
+      : "The toddler is struggling! Select a new style to learn:";
+    const btnText = useTechnicalTerms ? "Retrain Model" : "Learn More";
     retrainPrompt.innerHTML = `
-      <p>Performance dropped! Select a new style to retrain:</p>
-      <button id="retrain-btn" class="btn btn-primary">Retrain Model</button>
+      <p>${promptText}</p>
+      <button id="retrain-btn" class="btn btn-primary">${btnText}</button>
     `;
     document.getElementById("controls").appendChild(retrainPrompt);
     
