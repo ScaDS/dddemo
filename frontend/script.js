@@ -7,6 +7,8 @@ let correctPredictions = 0;
 let totalPredictions = 0;
 let correctCount = 0;
 let wrongCount = 0;
+let predictionWindow = []; // Sliding window of last 10 predictions (true/false for correct/incorrect)
+const WINDOW_SIZE = 10;
 let currentMode = "predict"; // "predict" or "retrain"
 let selectedPredictStyles = new Set(["real"]); // Styles selected for prediction display
 let useTechnicalTerms = false; // Toggle between technical and simple terms
@@ -84,13 +86,33 @@ function getTrueLabelFromPath(path) {
 
 function updateAccuracyDisplay() {
   const accuracyEl = document.getElementById("accuracy-percent");
+  const hintEl = document.getElementById("accuracy-hint");
+  const correctEl = document.getElementById("correct-count");
+  const wrongEl = document.getElementById("wrong-count");
   
   if (totalPredictions === 0) {
     accuracyEl.textContent = "0%";
+    if (hintEl) hintEl.textContent = `Based on last ${WINDOW_SIZE} samples`;
+    if (correctEl) correctEl.textContent = "0";
+    if (wrongEl) wrongEl.textContent = "0";
     return;
   }
 
-  const acc = Math.round((correctPredictions / totalPredictions) * 100);
+  // Use sliding window for all stats
+  const windowCorrect = predictionWindow.filter(p => p).length;
+  const windowWrong = predictionWindow.length - windowCorrect;
+  
+  if (correctEl) correctEl.textContent = windowCorrect;
+  if (wrongEl) wrongEl.textContent = windowWrong;
+  
+  let acc;
+  if (predictionWindow.length >= WINDOW_SIZE) {
+    acc = Math.round((windowCorrect / WINDOW_SIZE) * 100);
+    if (hintEl) hintEl.textContent = `Based on last ${WINDOW_SIZE} samples`;
+  } else {
+    acc = Math.round((windowCorrect / predictionWindow.length) * 100);
+    if (hintEl) hintEl.textContent = `${predictionWindow.length}/${WINDOW_SIZE} samples`;
+  }
   accuracyEl.textContent = `${acc}%`;
 }
 
@@ -176,6 +198,7 @@ document.querySelectorAll(".style-button").forEach(button => {
           totalPredictions = 0;
           correctCount = 0;
           wrongCount = 0;
+          predictionWindow = [];
           updateAccuracyDisplay();
           document.getElementById("correct-count").textContent = "0";
           document.getElementById("wrong-count").textContent = "0";
@@ -338,20 +361,29 @@ async function predict(imgEl) {
 
       const trueLabel = getTrueLabelFromPath(imgEl.src);
       totalPredictions++;
-      if (result.label === trueLabel) {
+      const isCorrect = result.label === trueLabel;
+      if (isCorrect) {
         correctPredictions++;
         correctCount++;
       } else {
         wrongCount++;
       }
+      
+      // Add to sliding window
+      predictionWindow.push(isCorrect);
+      if (predictionWindow.length > WINDOW_SIZE) {
+        predictionWindow.shift();
+      }
 
     updateAccuracyDisplay();
-    document.getElementById("correct-count").textContent = correctCount;
-    document.getElementById("wrong-count").textContent = wrongCount;
 
-      const accuracy = correctPredictions / totalPredictions;
+      // Compute accuracy on sliding window (only if we have enough predictions)
+      const windowCorrect = predictionWindow.filter(p => p).length;
+      const windowAccuracy = predictionWindow.length >= WINDOW_SIZE 
+        ? windowCorrect / WINDOW_SIZE 
+        : correctPredictions / totalPredictions;
 
-    if (accuracy < 0.75) {
+    if (windowAccuracy < 0.75 && predictionWindow.length >= WINDOW_SIZE) {
       document.getElementById("mother-speech").textContent = useTechnicalTerms 
         ? "Concept drift detected! Performance degradation observed." 
         : "Oh no, this image looks a little bit different... Consider retraining!";

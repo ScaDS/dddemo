@@ -550,6 +550,8 @@ body {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
+  row-gap: 0.25rem;
 }
 
 #summary-box h4 {
@@ -593,6 +595,14 @@ body {
 
 .stat-value.accuracy {
   color: var(--accent-primary);
+}
+
+.stat-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  width: 100%;
 }
 
 /* ========== Tech Info Box ========== */
