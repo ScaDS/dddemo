@@ -160,6 +160,9 @@ document.querySelectorAll(".style-button").forEach(button => {
           document.getElementById("baby-speech").textContent = useTechnicalTerms 
             ? "Model trained on new styles!" 
             : "I have learned new styles!";
+          document.getElementById("mother-speech").textContent = useTechnicalTerms 
+            ? "Model retrained successfully. Ready for new predictions." 
+            : "Great job! Let's see how well you do now!";
           button.classList.add("style-trained");
           showTrainingImages(style);
           
@@ -539,6 +542,10 @@ function updateSpeechBubbles() {
       motherSpeech.textContent = useTechnicalTerms 
         ? "Monitoring model performance metrics..." 
         : "Monitoring the toddler guessing cats and dogs...";
+    } else if (currentText.includes("Great job") || currentText.includes("retrained successfully")) {
+      motherSpeech.textContent = useTechnicalTerms 
+        ? "Model retrained successfully. Ready for new predictions." 
+        : "Great job! Let's see how well you do now!";
     } else if (currentText.includes("different") || currentText.includes("drift")) {
       motherSpeech.textContent = useTechnicalTerms 
         ? "Concept drift detected! Performance degradation observed." 
