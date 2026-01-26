@@ -52,21 +52,85 @@ navLinks.forEach(link => {
   });
 });
 
-// ========== THEME TOGGLE ==========
+// ========== ROUNDABOUT SCROLL EFFECT ==========
 
-const themeToggle = document.getElementById('theme-toggle');
+let roundaboutTransitioned = false;
 
-// Check for saved theme preference or default to dark
-const savedTheme = localStorage.getItem('theme') || 'dark';
-document.documentElement.setAttribute('data-theme', savedTheme);
-
-themeToggle.addEventListener('click', () => {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+function initRoundabout() {
+  const panelIntro = document.querySelector('.panel-intro');
+  const panelGame = document.querySelector('.panel-game');
+  const fundamentalsSection = document.getElementById('fundamentals');
   
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-});
+  if (!panelIntro || !panelGame || !fundamentalsSection) return;
+  
+  function checkScroll() {
+    const sectionRect = fundamentalsSection.getBoundingClientRect();
+    // Trigger only when the section top is well above the viewport (scrolled significantly into view)
+    const triggerPoint = -200; // Must scroll 200px past the section top
+    
+    // Transition when the fundamentals section is scrolled past the trigger point
+    if (sectionRect.top < triggerPoint && !roundaboutTransitioned) {
+      roundaboutTransitioned = true;
+      panelIntro.classList.remove('active');
+      panelIntro.classList.add('rotating-out');
+      panelGame.classList.add('active');
+      
+      // Hide intro panel after animation completes
+      setTimeout(() => {
+        panelIntro.classList.add('hidden');
+      }, 800);
+    }
+  }
+  
+  window.addEventListener('scroll', checkScroll);
+  
+  // Also allow clicking on the intro to transition
+  panelIntro.addEventListener('click', () => {
+    if (!roundaboutTransitioned) {
+      transitionToGame();
+    }
+  });
+  
+  // Back button to show intro again
+  const backBtn = document.getElementById('back-to-intro');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      transitionToIntro();
+    });
+  }
+}
+
+function transitionToGame() {
+  const panelIntro = document.querySelector('.panel-intro');
+  const panelGame = document.querySelector('.panel-game');
+  
+  roundaboutTransitioned = true;
+  panelIntro.classList.remove('active');
+  panelIntro.classList.add('rotating-out');
+  panelGame.classList.add('active');
+  
+  setTimeout(() => {
+    panelIntro.classList.add('hidden');
+  }, 800);
+}
+
+function transitionToIntro() {
+  const panelIntro = document.querySelector('.panel-intro');
+  const panelGame = document.querySelector('.panel-game');
+  
+  roundaboutTransitioned = false;
+  panelIntro.classList.remove('hidden');
+  panelIntro.classList.remove('rotating-out');
+  panelIntro.classList.add('active');
+  panelGame.classList.remove('active');
+}
+
+window.addEventListener('load', initRoundabout);
+
+// ========== THEME ==========
+
+// Set default theme to light
+document.documentElement.setAttribute('data-theme', 'light');
 
 // ========== UTILITIES ==========
 
@@ -139,6 +203,13 @@ document.getElementById("tech-info-toggle").addEventListener("click", () => {
 document.getElementById("train").addEventListener("click", () => {
   currentMode = "retrain";
   updateModeUI();
+  
+  // Hide retrain prompt if visible
+  const retrainPrompt = document.getElementById("retrain-prompt");
+  if (retrainPrompt) {
+    retrainPrompt.style.display = "none";
+  }
+  
   document.getElementById("baby-speech").textContent = useTechnicalTerms 
     ? "Ready to train on new data..." 
     : "Ready to learn from new data...";
@@ -238,9 +309,7 @@ document.getElementById("guess").addEventListener("click", async () => {
 });
 
 document.getElementById("restart").addEventListener("click", async () => {
-  showLoadingAnimation();
   await fetch(`${BACKEND_URL}/reset`, { method: "POST" });
-  hideLoadingAnimation();
 
   currentStyle = null;
   trainedStyles = new Set(["real"]);
@@ -355,9 +424,9 @@ async function predict(imgEl) {
       imgEl.classList.add("disabled-image");
       imgEl.onclick = null;
 
-    document.getElementById("baby-speech").textContent = useTechnicalTerms 
-      ? `Prediction: ${result.label}` 
-      : `I guess it is a ${result.label}`;
+    document.getElementById("baby-speech").innerHTML = useTechnicalTerms 
+      ? `Prediction: <strong>${result.label}</strong>` 
+      : `I guess it is a <strong>${result.label}</strong>`;
 
       const trueLabel = getTrueLabelFromPath(imgEl.src);
       totalPredictions++;
@@ -552,10 +621,10 @@ function updateSpeechBubbles() {
         ? "I have been trained on new styles!" 
         : "I have learned new styles!";
     } else if (currentText.includes("guess it is") || currentText.includes("predict it is")) {
-      const label = currentText.match(/a (\w+)$/)?.[1] || "cat";
-      babySpeech.textContent = useTechnicalTerms 
-        ? `Prediction: ${label}` 
-        : `I guess it is a ${label}`;
+      const label = currentText.match(/a (\w+)$/)?.[1] || currentText.match(/<strong>(\w+)<\/strong>/)?.[1] || "cat";
+      babySpeech.innerHTML = useTechnicalTerms 
+        ? `Prediction: <strong>${label}</strong>` 
+        : `I guess it is a <strong>${label}</strong>`;
     } else if (currentText.includes("Click on images")) {
       babySpeech.textContent = useTechnicalTerms 
         ? "Click on images to run predictions..." 
@@ -657,5 +726,62 @@ function initializeApp() {
 // Initialize when DOM is ready
 window.addEventListener("load", () => {
   initializeApp();
+  initSlider('.application-slider');
+  initSlider('.research-slider');
 });
+
+// ========== SLIDER ==========
+
+function initSlider(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+  
+  const sliderTrack = container.querySelector('.slider-track');
+  const navBtns = container.querySelectorAll('.slider-nav-btn');
+  const prevBtn = container.querySelector('.slider-prev');
+  const nextBtn = container.querySelector('.slider-next');
+  
+  if (!sliderTrack || navBtns.length === 0) return;
+  
+  let currentSlide = 0;
+  const totalSlides = navBtns.length;
+  
+  function goToSlide(index) {
+    if (index < 0 || index >= totalSlides) return;
+    
+    currentSlide = index;
+    sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update nav buttons
+    navBtns.forEach(btn => btn.classList.remove('active'));
+    navBtns[currentSlide].classList.add('active');
+    
+    // Update arrow states
+    updateArrows();
+  }
+  
+  function updateArrows() {
+    if (prevBtn) prevBtn.disabled = currentSlide === 0;
+    if (nextBtn) nextBtn.disabled = currentSlide === totalSlides - 1;
+  }
+  
+  // Nav button clicks
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const slideIndex = parseInt(btn.dataset.slide);
+      goToSlide(slideIndex);
+    });
+  });
+  
+  // Arrow clicks
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+  }
+  
+  // Initialize
+  updateArrows();
+}
 
