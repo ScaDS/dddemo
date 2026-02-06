@@ -409,6 +409,20 @@ function loadGuessingImages() {
 
 // ========== PREDICTION ==========
 
+// Prediction phrase variants for the toddler
+const predictionPhrases = [
+  "I think it is a ",
+  "I believe it is a ",
+  "I guess it is a ",
+  "It looks like a ",
+  "That must be a ",
+  "I'm pretty sure it's a "
+];
+
+function getRandomPredictionPhrase() {
+  return predictionPhrases[Math.floor(Math.random() * predictionPhrases.length)];
+}
+
 async function predict(imgEl) {
   console.log(imgEl)
   const file = await fileFromUrl(imgEl.src);
@@ -424,9 +438,16 @@ async function predict(imgEl) {
       imgEl.classList.add("disabled-image");
       imgEl.onclick = null;
 
-    document.getElementById("baby-speech").innerHTML = useTechnicalTerms 
+    const babySpeech = document.getElementById("baby-speech");
+    const phrase = getRandomPredictionPhrase();
+    babySpeech.innerHTML = useTechnicalTerms 
       ? `Prediction: <strong>${result.label}</strong>` 
-      : `I guess it is a <strong>${result.label}</strong>`;
+      : `${phrase.trim()}&nbsp;<strong>${result.label}</strong>`;
+    
+    // Trigger shine animation
+    babySpeech.classList.remove("shine");
+    void babySpeech.offsetWidth; // Force reflow to restart animation
+    babySpeech.classList.add("shine");
 
       const trueLabel = getTrueLabelFromPath(imgEl.src);
       totalPredictions++;
@@ -434,9 +455,12 @@ async function predict(imgEl) {
       if (isCorrect) {
         correctPredictions++;
         correctCount++;
+        imgEl.classList.add("prediction-correct");
       } else {
         wrongCount++;
+        imgEl.classList.add("prediction-wrong");
       }
+      imgEl.classList.add("disabled-image");
       
       // Add to sliding window
       predictionWindow.push(isCorrect);
