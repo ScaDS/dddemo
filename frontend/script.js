@@ -748,11 +748,123 @@ function initializeApp() {
 }
 
 // Initialize when DOM is ready
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   initializeApp();
-  initSlider('.application-slider');
-  initSlider('.research-slider');
+  await loadDynamicSlider('.application-slider');
+  await loadDynamicSlider('.research-slider');
 });
+
+// ========== DYNAMIC CONTENT LOADING ==========
+
+// Content file registry - add new files here to include them in the sliders
+const contentRegistry = {
+  'content/applications': [
+    'content/applications/01-transport-mode.html',
+    'content/applications/02-marine-event.html',
+    'content/applications/03-your-usecase.html'
+  ],
+  'content/research': [
+    'content/research/01-overview.html',
+    'content/research/02-computational-requirements.html',
+    'content/research/03-synthetic-evaluation.html'
+  ]
+};
+
+async function loadDynamicSlider(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+  
+  const contentDir = container.dataset.contentDir;
+  if (!contentDir || !contentRegistry[contentDir]) {
+    console.warn(`No content registry found for: ${contentDir}`);
+    return;
+  }
+  
+  const sliderNav = container.querySelector('.slider-nav');
+  const sliderTrack = container.querySelector('.slider-track');
+  
+  if (!sliderNav || !sliderTrack) return;
+  
+  // Clear existing content
+  sliderNav.innerHTML = '';
+  sliderTrack.innerHTML = '';
+  
+  const contentFiles = contentRegistry[contentDir];
+  const slides = [];
+  
+  // Load all content files
+  for (const filePath of contentFiles) {
+    try {
+      const response = await fetch(filePath);
+      if (!response.ok) continue;
+      
+      const html = await response.text();
+      const metadata = parseContentMetadata(html);
+      const content = extractContentBody(html);
+      
+      slides.push({
+        tabName: metadata.tabName || 'Untitled',
+        order: metadata.order || 999,
+        content: content
+      });
+    } catch (e) {
+      console.warn(`Failed to load content file: ${filePath}`, e);
+    }
+  }
+  
+  // Sort by order
+  slides.sort((a, b) => a.order - b.order);
+  
+  // Generate tabs and slides
+  slides.forEach((slide, index) => {
+    // Create nav button
+    const navBtn = document.createElement('button');
+    navBtn.className = 'slider-nav-btn' + (index === 0 ? ' active' : '');
+    navBtn.dataset.slide = index;
+    navBtn.textContent = slide.tabName;
+    sliderNav.appendChild(navBtn);
+    
+    // Create slide
+    const slideDiv = document.createElement('div');
+    slideDiv.className = 'slider-slide';
+    slideDiv.dataset.slide = index;
+    slideDiv.innerHTML = slide.content;
+    sliderTrack.appendChild(slideDiv);
+  });
+  
+  // Initialize slider functionality
+  initSlider(containerSelector);
+}
+
+function parseContentMetadata(html) {
+  const metadata = {
+    tabName: 'Untitled',
+    order: 999
+  };
+  
+  // Parse HTML comment metadata
+  const commentMatch = html.match(/<!--([\s\S]*?)-->/);
+  if (commentMatch) {
+    const commentContent = commentMatch[1];
+    
+    const tabNameMatch = commentContent.match(/tab-name:\s*(.+)/i);
+    if (tabNameMatch) {
+      metadata.tabName = tabNameMatch[1].trim();
+    }
+    
+    const orderMatch = commentContent.match(/order:\s*(\d+)/i);
+    if (orderMatch) {
+      metadata.order = parseInt(orderMatch[1]);
+    }
+  }
+  
+  return metadata;
+}
+
+function extractContentBody(html) {
+  // Remove the metadata comment and return the rest
+  return html.replace(/<!--[\s\S]*?-->/, '').trim();
+}
 
 // ========== SLIDER ==========
 

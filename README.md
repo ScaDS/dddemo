@@ -66,7 +66,10 @@ baby_drift/
 │   ├── index.html           # Main HTML page
 │   ├── script.js            # Frontend JavaScript
 │   ├── style.css            # Styling
-│   └── images/              # Frontend assets
+│   ├── images/              # Frontend assets
+│   └── content/             # Dynamic content for sliders
+│       ├── applications/    # Application use case pages
+│       └── research/        # Research topic pages
 ├── dataset/                 # Training dataset (cats and dogs)
 ├── requirements.txt         # Python dependencies
 └── README.md               # This file
@@ -209,6 +212,124 @@ docker stop <container-id>
 - CORS is enabled for all origins (modify in production if needed)
 - Dataset images are served via `/dataset` endpoint for the frontend to display
 - Toggle between "technical" and "non-technical" terminology in the UI
+
+## ➕ Adding New Applications or Research Content
+
+The Application and Research sections use a dynamic content loading system. You can easily add new tabs by creating HTML files in the appropriate directories.
+
+### Directory Structure
+
+```
+frontend/content/
+├── applications/          # Application use case pages
+│   ├── 01-transport-mode.html
+│   ├── 02-marine-event.html
+│   └── 03-your-usecase.html
+└── research/              # Research topic pages
+    ├── 01-overview.html
+    ├── 02-computational-requirements.html
+    └── 03-synthetic-evaluation.html
+```
+
+### Step 1: Create the Content File
+
+Create a new HTML file in the appropriate directory:
+- For applications: `frontend/content/applications/`
+- For research: `frontend/content/research/`
+
+**File naming convention**: Use a numbered prefix for organization (e.g., `04-new-topic.html`).
+
+### Step 2: Add Metadata and Content
+
+Each content file must include a metadata comment at the top:
+
+```html
+<!--
+  tab-name: Your Tab Name Here
+  order: 4
+-->
+<div class="slide-content">
+  <h3>Your Page Title</h3>
+  <p class="slide-intro">Your introduction text here...</p>
+  
+  <!-- Add any HTML content you want -->
+  <p>More content...</p>
+  <img src="images/your-image.png" alt="Description">
+</div>
+```
+
+**Metadata fields:**
+- `tab-name`: The text displayed on the navigation tab button
+- `order`: Determines tab order (lower numbers appear first)
+
+### Step 3: Register the File
+
+Add the new file path to the `contentRegistry` in `frontend/script.js`:
+
+```javascript
+const contentRegistry = {
+  'content/applications': [
+    'content/applications/01-transport-mode.html',
+    'content/applications/02-marine-event.html',
+    'content/applications/03-your-usecase.html',
+    'content/applications/04-your-new-file.html'  // Add here
+  ],
+  'content/research': [
+    'content/research/01-overview.html',
+    'content/research/02-computational-requirements.html',
+    'content/research/03-synthetic-evaluation.html',
+    'content/research/04-your-new-file.html'  // Or here
+  ]
+};
+```
+
+### Example: Adding a New Research Topic
+
+1. Create `frontend/content/research/04-detection-methods.html`:
+
+```html
+<!--
+  tab-name: Detection Methods
+  order: 4
+-->
+<div class="slide-content">
+  <h3>Drift Detection Methods</h3>
+  <p class="slide-intro">An overview of various drift detection algorithms...</p>
+  
+  <h4>Statistical Methods</h4>
+  <ul>
+    <li>Page-Hinkley Test</li>
+    <li>ADWIN</li>
+    <li>DDM (Drift Detection Method)</li>
+  </ul>
+  
+  <h4>Window-Based Methods</h4>
+  <p>These methods compare distributions between sliding windows...</p>
+</div>
+```
+
+2. Add to `contentRegistry` in `frontend/script.js`:
+
+```javascript
+'content/research': [
+  'content/research/01-overview.html',
+  'content/research/02-computational-requirements.html',
+  'content/research/03-synthetic-evaluation.html',
+  'content/research/04-detection-methods.html'
+]
+```
+
+3. Refresh the page - the new tab will appear automatically!
+
+### Available CSS Classes
+
+You can use these pre-defined CSS classes in your content:
+
+- `.slide-content` - Main content wrapper (required)
+- `.slide-intro` - Styled introduction paragraph
+- `.placeholder-text` - Italic placeholder text
+- `.research-gifs` - Container for images/GIFs
+- `.research-gif` - Styled image with shadow and rounded corners
 
 ## 🤝 Contributing
 
