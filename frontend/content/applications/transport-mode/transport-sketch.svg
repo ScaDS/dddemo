@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  
+  <!-- Walking Person -->
+  <g transform="translate(80, 90)">
+    <!-- Head -->
+    <circle cx="0" cy="0" r="18" stroke-dasharray="3,2" opacity="0.3"/>
+    <circle cx="0" cy="0" r="18"/>
+    <!-- Eyes -->
+    <circle cx="-6" cy="-2" r="2" fill="#2d3748"/>
+    <circle cx="6" cy="-2" r="2" fill="#2d3748"/>
+    <!-- Smile -->
+    <path d="M -6,6 Q 0,10 6,6" stroke-width="1.5"/>
+    <!-- Body -->
+    <path d="M 0,18 L 0,55" stroke-width="2.5"/>
+    <!-- Arms - walking motion -->
+    <path d="M 0,28 Q -15,35 -12,50" stroke-width="2.5"/>
+    <path d="M 0,28 Q 15,25 18,40" stroke-width="2.5"/>
+    <!-- Legs - walking stride -->
+    <path d="M 0,55 Q -8,70 -10,85" stroke-width="2.5"/>
+    <path d="M 0,55 Q 8,65 12,80" stroke-width="2.5"/>
+    <!-- Motion lines -->
+    <path d="M -15,45 L -20,48" stroke-width="1" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M 15,38 L 20,35" stroke-width="1" opacity="0.5" stroke-dasharray="2,2"/>
+  </g>
+  
+  <!-- Cyclist -->
+  <g transform="translate(170, 95)">
+    <!-- Head -->
+    <circle cx="5" cy="-5" r="14" stroke-dasharray="3,2" opacity="0.3"/>
+    <circle cx="5" cy="-5" r="14"/>
+    <!-- Eyes -->
+    <circle cx="1" cy="-7" r="2" fill="#2d3748"/>
+    <circle cx="9" cy="-7" r="2" fill="#2d3748"/>
+    <!-- Smile -->
+    <path d="M 1,0 Q 5,3 9,0" stroke-width="1.5"/>
+    <!-- Body leaning forward -->
+    <path d="M 5,9 Q 8,22 10,32" stroke-width="2.5"/>
+    <!-- Arms to handlebars -->
+    <path d="M 6,16 Q 18,22 25,25" stroke-width="2.5"/>
+    <path d="M 6,16 Q 14,20 20,22" stroke-width="2" opacity="0.5"/>
+    <!-- Legs pedaling -->
+    <path d="M 10,32 Q 8,42 6,50" stroke-width="2.5"/>
+    <path d="M 10,32 Q 15,40 18,46" stroke-width="2.5"/>
+    
+    <!-- Bicycle -->
+    <!-- Back wheel -->
+    <circle cx="-10" cy="55" r="16" stroke-width="2.5"/>
+    <circle cx="-10" cy="55" r="16" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.4"/>
+    <!-- Front wheel -->
+    <circle cx="38" cy="55" r="16" stroke-width="2.5"/>
+    <circle cx="38" cy="55" r="16" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.4"/>
+    <!-- Frame -->
+    <path d="M 14,30 L -10,55" stroke-width="2.5"/>
+    <path d="M 14,30 L 38,55" stroke-width="2.5"/>
+    <path d="M 14,30 L 25,25" stroke-width="2.5"/>
+    <path d="M -10,55 L 38,55" stroke-width="2" stroke-dasharray="3,2" opacity="0.3"/>
+    <!-- Seat -->
+    <path d="M 10,30 L 4,28" stroke-width="3"/>
+    <!-- Pedal -->
+    <circle cx="14" cy="45" r="3" stroke-width="2"/>
+    <!-- Speed lines -->
+    <path d="M -25,47 L -30,47" stroke-width="1.5" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M -25,55 L -32,55" stroke-width="1.5" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M -25,63 L -30,63" stroke-width="1.5" opacity="0.5" stroke-dasharray="2,2"/>
+  </g>
+  
+  <!-- Car -->
+  <g transform="translate(400, 100)">
+    <!-- Car body - sketchy style -->
+    <path d="M -35,20 Q -35,15 -30,15 L 30,15 Q 35,15 35,20 L 35,45 Q 35,50 30,50 L -30,50 Q -35,50 -35,45 Z" stroke-width="2.5"/>
+    <path d="M -33,18 L 33,18 L 33,48 L -33,48 Z" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+    <!-- Roof -->
+    <path d="M -22,15 Q -18,0 -8,0 L 8,0 Q 18,0 22,15" stroke-width="2.5"/>
+    <path d="M -20,13 Q -16,2 -8,2 L 8,2 Q 16,2 20,13" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.4"/>
+    <!-- Windows -->
+    <path d="M -18,5 L -18,13" stroke-width="2"/>
+    <path d="M -2,3 L -2,13" stroke-width="2"/>
+    <path d="M 2,3 L 2,13" stroke-width="2"/>
+    <path d="M 18,5 L 18,13" stroke-width="2"/>
+    <!-- Wheels - sketchy circles -->
+    <circle cx="-20" cy="50" r="10" stroke-width="2.5"/>
+    <circle cx="-20" cy="50" r="10" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.4"/>
+    <circle cx="-20" cy="50" r="5" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="20" cy="50" r="10" stroke-width="2.5"/>
+    <circle cx="20" cy="50" r="10" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.4"/>
+    <circle cx="20" cy="50" r="5" stroke-width="1.5" opacity="0.5"/>
+    <!-- Headlight -->
+    <circle cx="32" cy="30" r="3" stroke-width="1.5"/>
+    <!-- Speed lines -->
+    <path d="M -45,25 L -52,25" stroke-width="1.5" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M -45,35 L -54,35" stroke-width="1.5" opacity="0.5" stroke-dasharray="2,2"/>
+    <path d="M -45,45 L -52,45" stroke-width="1.5" opacity="0.5" stroke-dasharray="2,2"/>
+  </g>
+  
+  <!-- Mobile Phone with Crowdsensing -->
+  <g transform="translate(250, 30)">
+    <!-- Phone body - sketchy style -->
+    <rect x="-18" y="0" width="36" height="65" rx="4" stroke-width="2.5"/>
+    <rect x="-17" y="1" width="34" height="63" rx="3" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+    
+    <!-- Screen -->
+    <rect x="-14" y="5" width="28" height="50" rx="2" stroke-width="1.5"/>
+    
+    <!-- Screen content - sensor data visualization -->
+    <path d="M -8,15 L -4,25 L 0,20 L 4,30 L 8,22" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="-6" cy="35" r="2" fill="#2d3748" opacity="0.5"/>
+    <circle cx="0" cy="38" r="2" fill="#2d3748" opacity="0.5"/>
+    <circle cx="6" cy="33" r="2" fill="#2d3748" opacity="0.5"/>
+    <path d="M -8,45 L 8,45" stroke-width="1" opacity="0.4"/>
+    <path d="M -6,48 L 6,48" stroke-width="1" opacity="0.4"/>
+    
+    <!-- Home button -->
+    <circle cx="0" cy="60" r="3" stroke-width="1.5"/>
+    
+    <!-- Sensor waves - animated -->
+    <g class="sensor-waves">
+      <!-- Left waves -->
+      <path d="M -22,20 Q -20,18 -18,20" stroke-width="1.5" opacity="0.6" stroke-dasharray="2,2">
+        <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M -26,25 Q -23,22 -18,25" stroke-width="1.5" opacity="0.4" stroke-dasharray="2,2">
+        <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M -30,30 Q -26,26 -18,30" stroke-width="1.5" opacity="0.3" stroke-dasharray="2,2">
+        <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Right waves -->
+      <path d="M 22,20 Q 20,18 18,20" stroke-width="1.5" opacity="0.6" stroke-dasharray="2,2">
+        <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M 26,25 Q 23,22 18,25" stroke-width="1.5" opacity="0.4" stroke-dasharray="2,2">
+        <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M 30,30 Q 26,26 18,30" stroke-width="1.5" opacity="0.3" stroke-dasharray="2,2">
+        <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- Data collection indicator - pulsing dot -->
+    <circle cx="12" cy="8" r="2.5" fill="#2d3748" opacity="0.7">
+      <animate attributeName="r" values="2;3.5;2" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.3;0.7" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Connecting lines from transport modes to phone -->
+  <g stroke-dasharray="4,3" opacity="0.4">
+    <!-- From walker to phone -->
+    <path d="M 80,70 Q 150,50 232,50" stroke-width="1.5">
+      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <!-- From cyclist to phone -->
+    <path d="M 184,110 Q 215,75 240,60" stroke-width="1.5">
+      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+    <!-- From car to phone -->
+    <path d="M 380,90 Q 320,60 268,50" stroke-width="1.5">
+      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Decorative motion/sensor waves at bottom -->
+  <g transform="translate(250, 160)">
+    <path d="M -150,0 Q -140,-5 -130,0 Q -120,5 -110,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+    <path d="M -80,0 Q -70,-5 -60,0 Q -50,5 -40,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+    <path d="M 40,0 Q 50,-5 60,0 Q 70,5 80,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+    <path d="M 110,0 Q 120,-5 130,0 Q 140,5 150,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+  </g>
+</svg>

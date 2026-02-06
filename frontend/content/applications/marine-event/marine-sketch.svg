@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  
+  <!-- Ship -->
+  <g transform="translate(80, 80)">
+    <!-- Hull -->
+    <path d="M -40,30 L -35,50 L 35,50 L 40,30 Z" stroke-width="2.5" fill="none"/>
+    <path d="M -38,32 L -33,48 L 33,48 L 38,32" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+    <!-- Deck -->
+    <path d="M -40,30 L 40,30" stroke-width="2.5"/>
+    <!-- Cabin -->
+    <path d="M -15,10 L -15,30 L 15,30 L 15,10 Z" stroke-width="2.5"/>
+    <path d="M -13,12 L -13,28 L 13,28 L 13,12 Z" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.3"/>
+    <!-- Windows -->
+    <rect x="-10" y="15" width="6" height="5" stroke-width="1.5"/>
+    <rect x="4" y="15" width="6" height="5" stroke-width="1.5"/>
+    <!-- Smokestack -->
+    <rect x="18" y="15" width="8" height="15" stroke-width="2"/>
+    <!-- Smoke -->
+    <path d="M 22,12 Q 20,8 22,5" stroke-width="1.5" opacity="0.5" stroke-dasharray="2,2">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 24,10 Q 26,6 24,2" stroke-width="1.5" opacity="0.4" stroke-dasharray="2,2">
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </path>
+    <!-- Water line -->
+    <path d="M -50,50 Q -45,48 -40,50 Q -35,52 -30,50 Q -25,48 -20,50 Q -15,52 -10,50 Q -5,48 0,50 Q 5,52 10,50 Q 15,48 20,50 Q 25,52 30,50 Q 35,48 40,50 Q 45,52 50,50" stroke-width="1.5" opacity="0.6"/>
+    <!-- Waves -->
+    <path d="M -50,55 Q -40,53 -30,55" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+    <path d="M 30,55 Q 40,53 50,55" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+  </g>
+
+  <!-- Sensor Device / Autosampler -->
+  <g transform="translate(250, 90)">
+    <!-- Device body -->
+    <rect x="-20" y="0" width="40" height="60" rx="3" stroke-width="2.5"/>
+    <rect x="-18" y="2" width="36" height="56" rx="2" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+    <!-- Screen/Display -->
+    <rect x="-15" y="8" width="30" height="25" rx="2" stroke-width="1.5"/>
+    <!-- Data visualization on screen -->
+    <path d="M -10,18 L -6,22 L -2,16 L 2,24 L 6,20 L 10,26" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="-8" cy="28" r="1.5" fill="#2d3748" opacity="0.5"/>
+    <circle cx="0" cy="30" r="1.5" fill="#2d3748" opacity="0.5"/>
+    <circle cx="8" cy="26" r="1.5" fill="#2d3748" opacity="0.5"/>
+    <!-- Buttons -->
+    <circle cx="-8" cy="42" r="3" stroke-width="1.5"/>
+    <circle cx="0" cy="42" r="3" stroke-width="1.5"/>
+    <circle cx="8" cy="42" r="3" stroke-width="1.5"/>
+    <!-- Status LED -->
+    <circle cx="15" cy="10" r="2" fill="#2d3748" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Sample tube -->
+    <rect x="-6" y="50" width="12" height="18" rx="1" stroke-width="2"/>
+    <path d="M -4,55 L 4,55" stroke-width="1" opacity="0.5"/>
+    <path d="M -4,60 L 4,60" stroke-width="1" opacity="0.5"/>
+    <!-- Cable/connection -->
+    <path d="M 0,68 Q 5,75 8,82" stroke-width="2" stroke-dasharray="3,2"/>
+  </g>
+
+  <!-- Water Sample Bottle -->
+  <g transform="translate(380, 100)">
+    <!-- Bottle -->
+    <path d="M -12,0 L -12,40 Q -12,48 0,48 Q 12,48 12,40 L 12,0 Z" stroke-width="2.5"/>
+    <path d="M -10,2 L -10,40 Q -10,46 0,46 Q 10,46 10,40 L 10,2" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.3"/>
+    <!-- Cap -->
+    <rect x="-8" y="-5" width="16" height="5" stroke-width="2"/>
+    <!-- Water level with algae -->
+    <path d="M -10,15 L 10,15" stroke-width="1" opacity="0.5"/>
+    <!-- Algae particles -->
+    <circle cx="-4" cy="20" r="2" stroke-width="1.5" opacity="0.6" fill="none"/>
+    <circle cx="3" cy="25" r="2" stroke-width="1.5" opacity="0.6" fill="none"/>
+    <circle cx="-6" cy="30" r="2" stroke-width="1.5" opacity="0.6" fill="none"/>
+    <circle cx="5" cy="35" r="2" stroke-width="1.5" opacity="0.6" fill="none"/>
+    <circle cx="0" cy="40" r="2" stroke-width="1.5" opacity="0.6" fill="none"/>
+    <!-- Bubbles -->
+    <circle cx="6" cy="18" r="1" stroke-width="1" opacity="0.4"/>
+    <circle cx="-3" cy="27" r="1" stroke-width="1" opacity="0.4"/>
+    <!-- Label -->
+    <rect x="-8" y="8" width="16" height="6" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- Algal Bloom Visualization -->
+  <g transform="translate(420, 30)">
+    <!-- Algae cluster -->
+    <circle cx="0" cy="0" r="8" stroke-width="2" opacity="0.6"/>
+    <circle cx="-10" cy="5" r="6" stroke-width="2" opacity="0.5"/>
+    <circle cx="8" cy="6" r="7" stroke-width="2" opacity="0.5"/>
+    <circle cx="-5" cy="-8" r="5" stroke-width="2" opacity="0.4"/>
+    <circle cx="6" cy="-6" r="6" stroke-width="2" opacity="0.4"/>
+    <!-- Inner details -->
+    <circle cx="0" cy="0" r="3" stroke-width="1" opacity="0.3"/>
+    <circle cx="-10" cy="5" r="2" stroke-width="1" opacity="0.3"/>
+    <circle cx="8" cy="6" r="2.5" stroke-width="1" opacity="0.3"/>
+    <!-- Pulsing effect -->
+    <circle cx="0" cy="0" r="12" stroke-width="1.5" opacity="0.3" stroke-dasharray="2,2">
+      <animate attributeName="r" values="12;15;12" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Temperature/Chlorophyll Sensor -->
+  <g transform="translate(180, 120)">
+    <!-- Thermometer-like sensor -->
+    <rect x="-3" y="0" width="6" height="35" rx="3" stroke-width="2"/>
+    <circle cx="0" cy="38" r="5" stroke-width="2"/>
+    <!-- Mercury/sensor fill -->
+    <rect x="-1" y="10" width="2" height="25" fill="#2d3748" opacity="0.4"/>
+    <circle cx="0" cy="38" r="3" fill="#2d3748" opacity="0.5"/>
+    <!-- Measurement lines -->
+    <path d="M 3,12 L 6,12" stroke-width="1" opacity="0.5"/>
+    <path d="M 3,20 L 6,20" stroke-width="1" opacity="0.5"/>
+    <path d="M 3,28 L 6,28" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- Connecting lines - data flow -->
+  <g stroke-dasharray="4,3" opacity="0.4">
+    <!-- From ship to sensor device -->
+    <path d="M 120,110 Q 180,100 230,95" stroke-width="1.5">
+      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <!-- From sensor device to sample bottle -->
+    <path d="M 270,120 Q 320,115 368,110" stroke-width="1.5">
+      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+    <!-- From algae to sensor -->
+    <path d="M 410,40 Q 350,60 270,85" stroke-width="1.5">
+      <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Decorative water waves at bottom -->
+  <g transform="translate(250, 165)">
+    <path d="M -200,0 Q -190,-3 -180,0 Q -170,3 -160,0 Q -150,-3 -140,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+    <path d="M -100,0 Q -90,-3 -80,0 Q -70,3 -60,0 Q -50,-3 -40,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+    <path d="M 40,0 Q 50,-3 60,0 Q 70,3 80,0 Q 90,-3 100,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+    <path d="M 140,0 Q 150,-3 160,0 Q 170,3 180,0 Q 190,-3 200,0" stroke-width="1" opacity="0.3" stroke-dasharray="3,2"/>
+  </g>
+</svg>

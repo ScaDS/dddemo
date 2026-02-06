@@ -1,0 +1,43 @@
+<!--
+  tab-name: Transport Mode Recognition
+  order: 1
+-->
+<div class="slide-content">
+  <div class="content-with-graphic" style="display: flex; gap: 2rem; align-items: center; max-width: 1600px; width: 100%; margin: 0 auto; padding: 0 1rem;">
+    <div class="text-content" style="flex: 1.5; text-align: left;">
+      <h3 style="margin-top: 0;">Transport Mode Recognition</h3>
+      <p>Transportation planning uses crowdsensing to track how people move around. Raw sensor data needs to be classified into transport types (walking, cycling, driving, etc.). However, the same transport mode looks different in the sensor data depending on:</p>
+      <ul style="margin-left: 1.5rem; padding-left: 0;">
+        <li>Terrain (hills vs. flat roads)</li>
+        <li>Location (left-hand vs. right-hand traffic)</li>
+        <li>Device differences (phone models, sensor quality)</li>
+        <li>Individual behavior (aggressive vs. calm cycling)</li>
+        <li>...</li>
+      </ul>
+      <p>In a crowdsensing campaign, we can not know in advance what variations we will see in the data.
+       This is where concept drift detection comes in, automatically identifying changes in data patterns during collection and supporting adaptive recognition to adjust the system accordingly.
+      Ultimately, this leads to better transportation planning.</p>
+      
+      <div style="margin-top: 1rem; text-align: center;">
+        <img src="content/applications/transport-mode/transport-sketch.svg" alt="Transportation modes illustration" style="max-width: 60%; height: auto;">
+      </div>
+    </div>
+
+    <div class="graphic-placeholder" data-animate-button="true" style="flex: 1; align-self: center;">
+      <div class="image-overlay-container" style="position: relative; display: inline-block; width: 100%;">
+        <img src="content/applications/transport-mode/user1_handsVSbag_grey.png" alt="Transport mode data visualization" style="display: block; width: 100%; height: auto;">
+        <img src="content/applications/transport-mode/user1_handsVSbag_noLegend.png" alt="Transport mode data overlay" class="overlay-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;">
+      </div>
+      <div class="button-container" style="margin-top: 10px; width: 100%; text-align: center;">
+        <button class="toggle-overlay-btn" style="padding: 8px 20px; font-size: 0.9em; cursor: pointer; background-color: #0074ac; color: white; border: none; border-radius: 4px;">Show Overlay</button>
+      </div>
+      <div class="image-description" style="margin-top: 15px; font-size: 0.9em; color: #666; line-height: 1.4;">
+        <p><em>Click the button to compare sensor data patterns (after a t-SNE projection).
+          The color overlay shows variations detected depending on how a mobile device was carried while cycling: <span color="#ffa500">orange</span> means carried in <span color="#ffa500">bag</span>, <span color="#0074ac">blue</span> means carried in <span color="#0074ac">hand</span>.</em>
+          A machine learning model may not work on the orange points (carried in bag) as it was trained on the blue points (carried in hand).
+        </p>
+      </div>
+    </div>
+    <script src="content/applications/transport-mode/slider.js"></script>
+  </div>
+</div>

@@ -759,14 +759,14 @@ window.addEventListener("load", async () => {
 // Content file registry - add new files here to include them in the sliders
 const contentRegistry = {
   'content/applications': [
-    'content/applications/01-transport-mode.html',
-    'content/applications/02-marine-event.html',
-    'content/applications/03-your-usecase.html'
+    'content/applications/transport-mode/index.html',
+    'content/applications/marine-event/index.html',
+    'content/applications/your-usecase/index.html'
   ],
   'content/research': [
-    'content/research/01-overview.html',
-    'content/research/02-computational-requirements.html',
-    'content/research/03-synthetic-evaluation.html'
+    'content/research/overview/index.html',
+    'content/research/computational-requirements/index.html',
+    'content/research/synthetic-evaluation/index.html'
   ]
 };
 
@@ -830,10 +830,35 @@ async function loadDynamicSlider(containerSelector) {
     slideDiv.dataset.slide = index;
     slideDiv.innerHTML = slide.content;
     sliderTrack.appendChild(slideDiv);
+    
+    // Execute any script tags in the content
+    executeScripts(slideDiv);
   });
   
   // Initialize slider functionality
   initSlider(containerSelector);
+}
+
+function executeScripts(container) {
+  const scripts = container.querySelectorAll('script');
+  scripts.forEach(oldScript => {
+    const newScript = document.createElement('script');
+    
+    // Copy attributes
+    Array.from(oldScript.attributes).forEach(attr => {
+      newScript.setAttribute(attr.name, attr.value);
+    });
+    
+    // Copy content or src
+    if (oldScript.src) {
+      newScript.src = oldScript.src;
+    } else {
+      newScript.textContent = oldScript.textContent;
+    }
+    
+    // Replace old script with new one to trigger execution
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  });
 }
 
 function parseContentMetadata(html) {

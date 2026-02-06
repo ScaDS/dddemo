@@ -1,0 +1,37 @@
+<!--
+  tab-name: Marine Event Detection
+  order: 2
+-->
+<div class="slide-content">
+  <div class="content-with-graphic" style="display: flex; gap: 2rem; align-items: center; max-width: 1600px; width: 100%; margin: 0 auto; padding: 0 1rem;">
+    <div class="text-content" style="flex: 1; text-align: left;">
+      <h3 style="margin-top: 0;">Marine Event Detection</h3>
+      <p>Toxic algal blooms can cause financial damages in aquaculture and endanger human health, but common sensors on marine vessels cannot determine the species and abundance.
+        This level of information can only reliably be obtained by analyzing a water sample.
+        We deploy concept drift detection to determine transitions of a vessel based on the provided sensor data into and out of algal blooms.
+        Once the vessel transitions into an algal bloom, a water sample can be obtained for later analysis in the lab.
+        The analyzed data consists of different sensor readings, such as the water temperature or the chlorophyll-a concentration.
+        </p>
+      
+      <div style="margin-top: 1rem; text-align: center;">
+        <img src="content/applications/marine-event/marine-sketch.svg" alt="Marine event detection illustration" style="max-width: 85%; height: auto;">
+      </div>
+    </div>
+
+    <div class="graphic-placeholder" data-animate-slider="marine-event" style="flex: 1; display: flex; gap: 1rem; align-items: center; justify-content: center;">
+      <div style="flex-shrink: 0;">
+        <div class="image-overlay-container" style="position: relative; display: inline-block; max-width: 250px;">
+          <img src="content/applications/marine-event/map.png" alt="Ship trajectory map" class="base-image" style="display: block; width: 100%; height: auto;">
+          <img src="content/applications/marine-event/histogram.png" alt="Event histogram overlay" class="overlay-image" style="position: absolute; top: 0; left: 0; width: 100%; height: auto; opacity: 0;">
+        </div>
+        <div class="slider-container" style="margin-top: 5px; width: 100%; max-width: 250px;">
+          <input type="range" min="0" max="100" value="0" class="opacity-slider" style="width: 100%;">
+        </div>
+      </div>
+      <div class="image-description" style="flex: 0 1 200px; font-size: 0.9em; color: #666; line-height: 1.4; text-align: left;">
+        <p><em>Use the slider to overlay the event histogram on the ship trajectory map. The histogram shows detected marine events (2023 in blue, 2024 in orange) plotted against latitude, revealing temporal and spatial patterns of algal bloom along the vessel's route.</em></p>
+      </div>
+    </div>
+    <script src="content/applications/marine-event/slider.js"></script>
+  </div>
+</div>
