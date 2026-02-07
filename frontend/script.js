@@ -766,7 +766,7 @@ const contentRegistry = {
   'content/research': [
     'content/research/overview/index.html',
     'content/research/computational-requirements/index.html',
-    'content/research/synthetic-evaluation/index.html'
+    'content/research/evaluation-approaches/index.html'
   ]
 };
 

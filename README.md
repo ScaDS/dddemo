@@ -173,7 +173,7 @@ const contentRegistry = {
   'content/research': [
     'content/research/01-overview.html',
     'content/research/02-computational-requirements.html',
-    'content/research/03-synthetic-evaluation.html',
+    'content/research/03-evaluation-approaches.html',
     'content/research/04-your-new-file.html'  // Or here
   ]
 };
@@ -210,7 +210,7 @@ const contentRegistry = {
 'content/research': [
   'content/research/01-overview.html',
   'content/research/02-computational-requirements.html',
-  'content/research/03-synthetic-evaluation.html',
+  'content/research/03-evaluation-approaches.html',
   'content/research/04-detection-methods.html'
 ]
 ```
