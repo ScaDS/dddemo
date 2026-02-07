@@ -411,12 +411,12 @@ function loadGuessingImages() {
 
 // Prediction phrase variants for the toddler
 const predictionPhrases = [
-  "I think it is a ",
-  "I believe it is a ",
-  "I guess it is a ",
-  "It looks like a ",
-  "That must be a ",
-  "I'm pretty sure it's a "
+  "I think it is a",
+  "I believe it is a",
+  "I guess it is a",
+  "It looks like a",
+  "That must be a",
+  "I'm pretty sure it's a"
 ];
 
 function getRandomPredictionPhrase() {
@@ -442,7 +442,7 @@ async function predict(imgEl) {
     const phrase = getRandomPredictionPhrase();
     babySpeech.innerHTML = useTechnicalTerms 
       ? `Prediction: <strong>${result.label}</strong>` 
-      : `${phrase.trim()}&nbsp;<strong>${result.label}</strong>`;
+      : `<span style="white-space:nowrap">${phrase} <strong>${result.label}</strong></span>`;
     
     // Trigger shine animation
     babySpeech.classList.remove("shine");
@@ -648,7 +648,7 @@ function updateSpeechBubbles() {
       const label = currentText.match(/a (\w+)$/)?.[1] || currentText.match(/<strong>(\w+)<\/strong>/)?.[1] || "cat";
       babySpeech.innerHTML = useTechnicalTerms 
         ? `Prediction: <strong>${label}</strong>` 
-        : `I guess it is a <strong>${label}</strong>`;
+        : `I guess it is <span style="white-space:nowrap">a <strong>${label}</strong></span>`;
     } else if (currentText.includes("Click on images")) {
       babySpeech.textContent = useTechnicalTerms 
         ? "Click on images to run predictions..." 
