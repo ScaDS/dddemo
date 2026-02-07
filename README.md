@@ -2,11 +2,6 @@
 
 An interactive demo application for understanding concept drift in machine learning. Watch how a model learns to classify cats and dogs, and see what happens when the data distribution changes.
 
-## Prerequisites
-
-- Python 3.8 or higher
-- pip (Python package manager)
-
 ## Quick Start
 
 ### 1. Clone the Repository
@@ -44,34 +39,8 @@ fastapi dev backend/main.py
 ```
 
 The application will be available at:
-- **Web Application**: http://localhost:8000 (Frontend UI)
+- **Web Application**: http://localhost:8000
 
-
-
-## Project Structure
-
-```
-baby_drift/
-├── backend/
-│   ├── __init__.py
-│   ├── main.py              # FastAPI application entry point
-│   ├── model.py             # CNN model definition and wrapper
-│   ├── utils.py             # Utility functions
-│   ├── prepare_images.py    # Image preprocessing script
-│   ├── train_all_models.py  # Model training script
-│   └── models/              # Trained model files (.pt)
-├── frontend/
-│   ├── index.html           # Main HTML page
-│   ├── script.js            # Frontend JavaScript
-│   ├── style.css            # Styling
-│   ├── images/              # Frontend assets
-│   └── content/             # Dynamic content for sliders
-│       ├── applications/    # Application use case pages
-│       └── research/        # Research topic pages
-├── dataset/                 # Training dataset (cats and dogs)
-├── requirements.txt         # Python dependencies
-└── README.md               # This file
-```
 
 ## Docker Setup
 
