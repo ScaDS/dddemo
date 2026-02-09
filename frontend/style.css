@@ -1122,6 +1122,68 @@ body {
   padding: 4rem 2rem;
 }
 
+/* ========== Paper Cards ========== */
+.paper-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.paper-card {
+  display: flex;
+  align-items: stretch;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.paper-card:hover {
+  transform: translateX(4px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.paper-year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  padding: 1rem;
+  background: var(--accent-primary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.paper-body {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.paper-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.paper-authors {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.paper-venue {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--accent-secondary);
+}
+
 .research-gifs {
   display: flex;
   gap: 2rem;
@@ -1218,7 +1280,15 @@ body {
   .main-container {
     flex-direction: column;
   }
-  
+
+  .app-sketch {
+    width: 300px;
+  }
+
+  .app-item{
+    flex-direction: column;
+  }
+
   .left-panel,
   .right-panel {
     width: 100%;
