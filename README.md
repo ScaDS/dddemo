@@ -22,7 +22,10 @@ cd baby_drift
 If you have installed Git LFS on your machine, the models should be initialized when cloning in step 1.
 In case they have not been downloaded, you may need to run the command `git lfs pull`.
 
-Alternatively, the models are available at the following link and can be moved to the 'backend/models' folder.
+Alternatively, the models are available via the demonstrator website:
+https://launchpad.scads.ai/dddemo/download_models
+
+After downloading them, move the models to the `backend/models` directory.
 
 
 ### 3. Set Up Virtual Environment (Recommended)
