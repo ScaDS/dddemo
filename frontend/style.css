@@ -82,12 +82,34 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
+  flex: 1;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
   gap: 2rem;
+  justify-content: center;
+  flex: 2;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-icon {
+  color: rgba(255, 255, 255, 0.85);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.nav-icon:hover {
+  color: #ffffff;
 }
 
 .nav-link {

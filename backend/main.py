@@ -23,6 +23,7 @@ app.add_middleware(
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATASET_DIR = os.path.join(BASE_DIR, "dataset")
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+MODELS_DIR = os.path.join(BASE_DIR, "backend", "models")
 # Serve static dataset images to frontend
 app.mount("/dataset", StaticFiles(directory=DATASET_DIR), name="dataset")
 app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
@@ -72,6 +73,18 @@ def get_loaded_styles():
     Return the currently loaded style list (alphabetical).
     """
     return {"loaded_styles": model.loaded_styles}
+
+@app.get("/download_models")
+def download_models():
+    """
+    Download all models as a zip archive.
+    """
+    zip_path = os.path.join(MODELS_DIR, "dddemo_models.zip")
+    return FileResponse(
+        zip_path,
+        media_type="application/zip",
+        filename="dddemo_models.zip"
+    )
 
 # Mount frontend static files (CSS, JS, images) - MUST BE LAST
 # This serves all static assets like style.css, script.js, etc.

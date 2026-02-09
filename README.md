@@ -2,6 +2,12 @@
 
 An interactive demo application for understanding concept drift in machine learning. Watch how a model learns to classify cats and dogs, and see what happens when the data distribution changes.
 
+## Prerequisite
+
+To download the pre-trained models, you need to install Git LFS (see: https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage). 
+
+Alternatively, you can download the models after cloning the repository.
+
 ## Quick Start
 
 ### 1. Clone the Repository
@@ -11,7 +17,15 @@ git clone <repository-url>
 cd baby_drift
 ```
 
-### 2. Set Up Virtual Environment (Recommended)
+### 2. Download the pre-trained Models
+
+If you have installed Git LFS on your machine, the models should be initialized when cloning in step 1.
+In case they have not been downloaded, you may need to run the command `git lfs pull`.
+
+Alternatively, the models are available at the following link and can be moved to the 'backend/models' folder.
+
+
+### 3. Set Up Virtual Environment (Recommended)
 
 ```bash
 # Create virtual environment
@@ -24,13 +38,13 @@ source venv/bin/activate
 # venv\Scripts\activate
 ```
 
-### 3. Install Dependencies
+### 4. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Start the Application
+### 5. Start the Application
 
 Run the FastAPI server using the development mode:
 
