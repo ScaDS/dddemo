@@ -52,6 +52,39 @@ navLinks.forEach(link => {
   });
 });
 
+// ========== VIDEO MODAL ==========
+
+const videoModalBtn = document.getElementById('video-modal-btn');
+const videoModal = document.getElementById('video-modal');
+const videoModalClose = document.getElementById('video-modal-close');
+const videoPlayer = document.getElementById('video-modal-player');
+
+if (videoModalBtn && videoModal) {
+  videoModalBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    videoModal.classList.add('active');
+  });
+
+  videoModalClose.addEventListener('click', () => {
+    videoModal.classList.remove('active');
+    videoPlayer.pause();
+  });
+
+  videoModal.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+      videoModal.classList.remove('active');
+      videoPlayer.pause();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+      videoModal.classList.remove('active');
+      videoPlayer.pause();
+    }
+  });
+}
+
 // ========== ROUNDABOUT SCROLL EFFECT ==========
 
 let roundaboutTransitioned = false;
@@ -310,12 +343,20 @@ document.getElementById("guess").addEventListener("click", async () => {
 
 document.getElementById("restart").addEventListener("click", async () => {
   await fetch(`${BACKEND_URL}/reset`, { method: "POST" });
+  await fetch(`${BACKEND_URL}/train/?styles=real`, { method: "POST" });
 
   currentStyle = null;
   trainedStyles = new Set(["real"]);
   selectedStyles = ["real"];
   selectedPredictStyles = new Set(["real"]);
   currentMode = "predict";
+
+  // Remove trained checkmark from all buttons, then re-add only for "real"
+  document.querySelectorAll(".style-button").forEach(btn => {
+    btn.classList.remove("style-trained");
+  });
+  document.getElementById("real").classList.add("style-trained");
+
   updateModeUI();
 
   document.getElementById("image-panel").innerHTML = "";

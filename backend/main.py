@@ -74,6 +74,14 @@ def get_loaded_styles():
     """
     return {"loaded_styles": model.loaded_styles}
 
+@app.get("/video")
+def serve_video():
+    """
+    Serve the demo video.
+    """
+    video_path = os.path.join(FRONTEND_DIR, "video", "DDDemo_Video.mp4")
+    return FileResponse(video_path, media_type="video/mp4", filename="DDDemo_Video.mp4")
+
 @app.get("/download_models")
 def download_models():
     """

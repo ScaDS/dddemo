@@ -1463,3 +1463,60 @@ body {
 .speech-bubble.shine {
   animation: shine-pulse 0.8s ease-out;
 }
+
+/* ========== Video Modal ========== */
+.video-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.video-modal-overlay.active {
+  display: flex;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 960px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.video-modal-content video {
+  display: block;
+  width: 100%;
+  border-radius: 0 0 16px 16px;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.75rem;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+  transition: var(--transition);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+}
+
+.video-modal-close:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
